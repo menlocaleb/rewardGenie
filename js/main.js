@@ -15,4 +15,8 @@ $(document).ready(function() {
 		});
 		
 	});
+
+	initialize();
+	$('.dropdown-toggle').dropdown();
+	$('#geolocationError').hide();
 });
