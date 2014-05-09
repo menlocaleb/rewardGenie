@@ -2,7 +2,33 @@
 layout: default
 title: Reward Genie
 ---
+<div id="signUpPop" class="login-popup">
+        <a href="#" class="close" id = "closebtn"><img src="images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+          <form method="get" class="signup" action="" id = "signupform">
+                <fieldset class="textbox">
+                <h4 id = "popUpTitle">Sign Up</h4>
+              <label class="username">
+                <span>Username or email</span>
+                <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+              </label>
+              <label class="password">
+                <span>Password</span>
+                <input id="password" name="password" value="" type="password" placeholder="Password">
+              </label>
+               
+              <label class="creditCardNumber">
+                <span>CreditCardNumber</span>
+                <input id="CreditCardNumber" name="CreditCardNumber" value="" type="text" placeholder="Your Six digit cardNumber">
+              </label>
 
+                <button class="btn btn-success" type="submit" >Sign Up</button>
+                <button class ="btn btn-danger" type ="button" onclick = "closePopUp()" id = "cancelButton">Cancel</button>
+               
+                
+                </fieldset>
+          </form>
+    </div>
+    
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
