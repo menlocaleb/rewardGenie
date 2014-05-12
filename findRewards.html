@@ -1,0 +1,44 @@
+---
+layout: default
+title: Reward Genie
+---
+    
+	<div class="container-fluid">
+		<h3>Reward Genie will find you money!</h2>
+		<br/>
+				
+		<!--Drop down menu of local business locations-->
+		<div>
+		
+			<p id="currentLoc" style="margin: 10px;">Select your location from the following:</p>
+			
+			<!--Geolocation error message -->
+			<div id="geolocationError" style="margin: 10px;">
+				<p style="color:red"> <span class="glyphicon glyphicon-warning-sign"></span>
+				<strong>Alert:</strong> Cannot use geolocation services.</p>
+			</div>
+		
+			<select id="localMerchants" onchange="showLocation(this.options[this.selectedIndex].innerHTML)" style="width:80%;">
+			  <option value="null" selected>Select a location</option>
+			</select>
+		</div>
+		
+		- or -
+		<!--Manually enter local business location-->
+		<div>
+		
+			<p id="currentLoc" style="margin: 10px;">Enter a location that you would like to use:</p>
+		
+			  <div>
+				<input type="text" style="width: 80%; margin-top:10px;" id="typeLocation" placeholder="Enter location">
+				<input type="button" value="Find my deals" style=" margin-top:10px;" onClick="showLocation(document.getElementById('typeLocation').value);">
+			 </div>
+		</div>
+		
+		<!-- Displays the current location of user as selected above-->
+		<div id="resultsBiz" style="text-align:center; font-size:16pt"><br/>
+			You are currently located at <span id="location" style="color:red">UNKNOWN</span>
+		</div>
+	</div>
+	
+	<div id="map-canvas" style =" width: 100%; height: 30%;"></div>
