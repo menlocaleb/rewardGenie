@@ -28,7 +28,7 @@ function addUser(dataArray){
 	}
 	user.signUp(null,{
 		success: function(results){
-			alert("Succee saved");
+			alert("Succeed saved");
 			currentUser = user;
 		},
 		error:function(results,error){
