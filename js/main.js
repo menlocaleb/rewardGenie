@@ -32,7 +32,7 @@ function closePopUp(){
 }
 
 
-$("signupform").submit(function(e){
+$("#signupform").submit(function(e){
     //alert("Submitted");
     //event.preventDefault();
 
