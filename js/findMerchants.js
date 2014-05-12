@@ -65,7 +65,6 @@ function setupMapSearch(position) {
 	service = new google.maps.places.PlacesService(map);
 	service.nearbySearch(request, callback);
 }
-var run = "one ";
 
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -76,11 +75,9 @@ function callback(results, status) {
 
 		var newOption = document.createElement('option');
 		newOption.innerText = results[i].name;
-		newOption.setAttribute('value', run + results[i].types);
-		newOption.setAttribute('name', results[i].name);
-		
-		run = "two ";
-
+		newOption.setAttribute('value', results[i].types);
+		newOption.setAttribute('name', 'test');
+		//newOption.setAttribute('name', results[i].name);
 		categories.appendChild(newOption);
     }
   }
