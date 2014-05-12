@@ -32,7 +32,7 @@ function closePopUp(){
 }
 
 
-$("form").submit(function(e){
+$("signupform").submit(function(e){
     //alert("Submitted");
     //event.preventDefault();
 
@@ -43,6 +43,14 @@ $("form").submit(function(e){
 
   });
 
+
+$('#signInForm').submit(function(e){
+
+	var fields = $(this).serializeArray();
+
+	userLogin(fields);
+	return false;
+});
 
 
 $('#Signup').click(function() {

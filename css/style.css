@@ -130,6 +130,17 @@ form.signup input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
 form.signup input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
 
 
+.dropdown{
 
+    float: right;
+    color: white;
+
+}
+
+#logoutButton{
+    float: right;
+    height: 100%;
+    margin-top: 7px;
+}
 
 
