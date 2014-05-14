@@ -21,8 +21,13 @@ $(document).ready(function() {
 	$('.dropdown-toggle').dropdown();
 	$('#geolocationError').hide();
 	//$('#login').css('display',"none!important");
-	$('#login').hide();
-
+	if (!currentUser){
+		$('#login').hide();
+		$("#signupform").show();
+	}
+	else {
+		handleLogin(currentUser);
+	}
 	//$('#map-canvas').show();
 });
 
@@ -31,8 +36,6 @@ $("#logOutButton").click(function(){
 		handleLogin(currentUser);
 });
 
-
-//$("#logout").hide();
 
 function closePopUp(){
 	$('#myModal').modal('hide')

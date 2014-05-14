@@ -1,7 +1,7 @@
 //Parse.initialize("JBOonUKeC2EOV3Z4xoqkUDUfMMPqz00BZgm2dKX2", "qTL4hD4PR8kZqp1ux8KXbwpdgNaxAddDUMY9W81G"); // old hideNSeek key
 Parse.initialize("8IE4lU1jvQt72tVNPLfLg6YKsDMD5rR8pIUYUkg7", "rqKaLUoGAUZMWojI0IrHsgnr4ja3UzLRFrnJLi49"); // new app key
 
-var currentUser;
+var currentUser = Parse.User.current();
 var userLoginStatus = false;
 
 var User = Parse.Object.extend("User", {
@@ -31,7 +31,7 @@ function addUser(dataArray){
 	user.signUp(null,{
 		success: function(results){
 			//alert("Succeed saved");
-			currentUser = user;
+			currentUser = Parse.User.current();
 			
 			handleLogin(user);
 		},
@@ -51,7 +51,7 @@ function userLogin(userdata){
 	  success: function(user) {
 	    // Do stuff after successful login.
 	    //alert("You have logged in!");
-	    currentUser = user;
+	    currentUser = Parse.User.current();
 	    
 	    handleLogin(currentUser);
 	  },
@@ -104,6 +104,7 @@ function handleLogin(user){
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
 			currentUser = null;
+			Parse.User.logOut();
 			//parent.location.reload();
 		}
 }
