@@ -2,6 +2,7 @@ var infowindow;
 var pos;
 var map;
 var services;
+
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see a blank space instead of the map, this
 // is probably because you have denied permission for location sharing.
@@ -14,6 +15,7 @@ function initialize() {
     pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);	
 	setupMapSearch(pos);
+  
     }, function() {
       handleNoGeolocation(true);
     });
@@ -64,6 +66,7 @@ function setupMapSearch(position) {
 	  
 	service = new google.maps.places.PlacesService(map);
 	service.nearbySearch(request, callback);
+
 }
 
 function callback(results, status) {
@@ -76,7 +79,7 @@ function callback(results, status) {
 		var newOption = document.createElement('option');
 		newOption.innerText = results[i].name;
 		newOption.setAttribute('value', results[i].types);
-		newOption.setAttribute('name', 'test');
+		newOption.setAttribute('name', results[i].name);
 		//newOption.setAttribute('name', results[i].name);
 		categories.appendChild(newOption);
     }
@@ -87,4 +90,4 @@ function showLocation(value) {
 	document.getElementById("location").innerHTML = value;
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
