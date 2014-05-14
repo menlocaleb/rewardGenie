@@ -23,7 +23,7 @@ $(document).ready(function() {
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
 		$('#login').hide();
-		$("#signupform").show();
+		$("#signInForm").show();
 	}
 	else {
 		handleLogin(currentUser);
