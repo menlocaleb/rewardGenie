@@ -1,6 +1,27 @@
 function initialize() {
-  var mapOptions = {
-    center: new google.maps.LatLng(-33.8688, 151.2195),
+
+ // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+	setupMap(pos);
+	//alert("Get here 1");
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+  //alert("Get here 2");
+  
+}
+
+function setupMap(position) {
+
+var mapOptions = {
+    center: position,
     zoom: 13
   };
   var map = new google.maps.Map(document.getElementById('map-canvas2'),
@@ -60,6 +81,7 @@ function initialize() {
     infowindow.open(map, marker);
   });
 
+
   // Sets a listener on a radio button to change the filter type on Places
   // Autocomplete.
   function setupClickListener(id, types) {
@@ -67,11 +89,22 @@ function initialize() {
     google.maps.event.addDomListener(radioButton, 'click', function() {
       autocomplete.setTypes(types);
     });
-  }
-
-  setupClickListener('changetype-all', []);
+	
+	  setupClickListener('changetype-all', []);
   setupClickListener('changetype-establishment', ['establishment']);
   setupClickListener('changetype-geocode', ['geocode']);
+    }
+	
 }
 
+function handleNoGeolocation(errorFlag) {
+	
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+  $("geolocationError").show();
+  console.log(content);
+}
 google.maps.event.addDomListener(window, 'load', initialize);
