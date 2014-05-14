@@ -29,6 +29,9 @@ $(document).ready(function() {
 		handleLogin(currentUser);
 	}
 	//$('#map-canvas').show();
+
+	// Test get card details
+	getCardsByBank('bankName');
 });
 
 

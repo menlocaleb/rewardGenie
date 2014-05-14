@@ -22,6 +22,9 @@ var User = Parse.Object.extend("User", {
 });
 
 
+var Card = Parse.Object.extend("Card");
+
+
 function addUser(dataArray){
 
 	var user = new Parse.User();
@@ -116,5 +119,31 @@ function isLoggin(user){
 	
 
 }
+
+
+
+// if bankName is null/not given then all cards are fetched
+function getCardsByBank(bankName) {
+	var query = new Parse.Query(Card);
+	// TODO filter by bank name
+
+	query.find({
+	  success: function(results) {
+	    console.log("Successfully retrieved " + results.length + " cards.");
+	    // Do something with the returned Parse.Object values
+	    for (var i = 0; i < results.length; i++) { 
+	      var object = results[i];
+	      console.log(object.id + ' - ' + object.get('cardName'));
+	    }
+	  },
+	  error: function(error) {
+	    console.log("Error: " + error.code + " " + error.message);
+	  }
+	});	
+}
+
+
+
+
 
 
