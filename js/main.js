@@ -28,7 +28,7 @@ $(document).ready(function() {
 function closePopUp(){
 	$('#signUpPop').fadeOut(300 , function() {
 		$('#mask').remove();  
-		}); 	
+	}); 	
 }
 
 
