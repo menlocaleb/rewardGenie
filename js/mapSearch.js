@@ -14,7 +14,6 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
-  //alert("Get here 2");
   
 }
 
@@ -31,8 +30,11 @@ function setupMap(position) {
       document.getElementById('pac-input'));
 
   //var types = document.getElementById('type-selector');
+  var clearButton = document.getElementById('input-control')
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
+
+  
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
@@ -95,7 +97,18 @@ function setupMap(position) {
 
   });
 
+
+  setupClearListener('#clear-pac-input', '#pac-input', infowindow);
+
 	
+}
+
+function setupClearListener(id, inputId, info) {
+  $(id).click(function() {
+    $(inputId).val("");
+    $("#bestCard").html("");
+    info.close();
+  });
 }
 
 // Sets a listener on a radio button to change the filter type on Places

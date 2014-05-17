@@ -133,3 +133,15 @@
         font-size: 13px;
         font-weight: 300;
       }
+
+      #input-control {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #input-control span {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 300;
+      }

@@ -11,7 +11,6 @@ Discover
 5% Cashback Bonus at Home Improvement Stores, Furniture Stores, plus Bed Bath & Beyond on up to $1,500 in purchases
 */
 
-
 // Localize search
 // x button to clear search
 
