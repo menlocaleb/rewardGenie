@@ -21,8 +21,24 @@ var User = Parse.Object.extend("User", {
 
 });
 
+var Offer = Parse.Object.extend("Offer", {
+	getOfferPercent: function() {
+		return this.get("offerPercent");
+	},
+	card: function() {
+		return this.get("card");
+	}
+});
 
-var Card = Parse.Object.extend("Card");
+
+var Card = Parse.Object.extend("Card", {
+	getCardName: function() {
+		return this.get("cardName");
+	},
+	getOfferDescription: function() {
+		return this.get("offerDescription")
+	}
+});
 
 
 function addUser(dataArray){
@@ -125,7 +141,7 @@ function isLoggin(user){
 // if bankName is null/not given then all cards are fetched
 function getCardsByBank(bankName) {
 	var query = new Parse.Query(Card);
-	// TODO filter by bank name
+	
 
 	query.find({
 	  success: function(results) {
@@ -141,6 +157,44 @@ function getCardsByBank(bankName) {
 	  }
 	});	
 }
+
+// Research on how to set up relations
+//https://parse.com/questions/building-data-relationships-when-to-use-pointer-or-relation-type
+
+// takes in list of Google business types, and callback
+// checks parse for list of cards that have rewards for this type of place, then return data to callback
+function getApplicableCards(placeTypes, callback) {
+	var query = new Parse.Query(Offer);
+
+	// check if any of the placeTypes are listed in the array for which an offer is valid
+	// only one of the placeTypes has to match with any of the places listed in places for an offer
+	query.containedIn("places", placeTypes);
+
+	query.include("card");
+	query.descending("offerPercent");
+
+	query.find({
+	  success: function(results) {
+	    console.log("Successfully retrieved " + results.length + " offers.");
+	    callback(results);
+	  },
+	  error: function(error) {
+	    console.log("Error: " + error.code + " " + error.message);
+	  }
+	});
+
+	// for debugging/testing
+	console.log("Place types:");
+	console.log(placeTypes);
+}
+
+
+
+
+
+
+
+
 
 
 

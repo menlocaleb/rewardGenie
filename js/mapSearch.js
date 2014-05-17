@@ -44,6 +44,7 @@ var mapOptions = {
   });
 
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
@@ -79,6 +80,19 @@ var mapOptions = {
 
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
+
+    // Do card recommendations based on place.types
+    // function from db.js
+    getApplicableCards(place.types, function(offers) {
+      if (offers.length > 0) {
+        console.log(offers);
+        showBestCard(offers[0]);
+      } else {
+        console.log("no applicable cards found.")
+        showBestCard(false);
+      }
+    });
+
   });
 
 
@@ -107,4 +121,22 @@ function handleNoGeolocation(errorFlag) {
   $("geolocationError").show();
   console.log(content);
 }
+
+
+function showBestCard(offer) {
+  if (offer) {
+    $("#bestCard").html("<h4>Best card to use is the <strong>" + offer.card().getCardName() + "</strong> card.</h4> <p>" + offer.card().getOfferDescription() + "</p>");
+  } else {
+    $("#bestCard").html("<h4><span class='label label-danger'>No Results</span> Unfortunately, we didn't find any cards that offered rewards at this location.</h4>")
+  }
+}
+
+
+
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
