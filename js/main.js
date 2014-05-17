@@ -12,6 +12,10 @@ Discover
 */
 
 
+// Localize search
+// x button to clear search
+
+
 
 // Start of execution
 $(document).ready(function() {
@@ -39,10 +43,8 @@ $(document).ready(function() {
 	else {
 		handleLogin(currentUser);
 	}
-	//$('#map-canvas').show();
 
-	// Test get card details
-	getCardsByBank('bankName');
+	
 });
 
 

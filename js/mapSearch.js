@@ -20,7 +20,7 @@ function initialize() {
 
 function setupMap(position) {
 
-var mapOptions = {
+  var mapOptions = {
     center: position,
     zoom: 13
   };
@@ -30,9 +30,9 @@ var mapOptions = {
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
 
-  var types = document.getElementById('type-selector');
+  //var types = document.getElementById('type-selector');
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+  //map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
@@ -95,21 +95,23 @@ var mapOptions = {
 
   });
 
-
-  // Sets a listener on a radio button to change the filter type on Places
-  // Autocomplete.
-  function setupClickListener(id, types) {
-    var radioButton = document.getElementById(id);
-    google.maps.event.addDomListener(radioButton, 'click', function() {
-      autocomplete.setTypes(types);
-    });
-	
-	  setupClickListener('changetype-all', []);
-  setupClickListener('changetype-establishment', ['establishment']);
-  setupClickListener('changetype-geocode', ['geocode']);
-    }
 	
 }
+
+// Sets a listener on a radio button to change the filter type on Places
+// Autocomplete.
+/*
+function setupClickListener(id, types) {
+  var radioButton = document.getElementById(id);
+  google.maps.event.addDomListener(radioButton, 'click', function() {
+    autocomplete.setTypes(types);
+  });
+
+  setupClickListener('changetype-all', []);
+  setupClickListener('changetype-establishment', ['establishment']);
+  setupClickListener('changetype-geocode', ['geocode']);
+}
+*/
 
 function handleNoGeolocation(errorFlag) {
 	
