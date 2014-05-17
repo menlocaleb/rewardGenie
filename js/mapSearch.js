@@ -125,7 +125,7 @@ function handleNoGeolocation(errorFlag) {
 
 function showBestCard(offer) {
   if (offer) {
-    $("#bestCard").html("<h4>Best card to use is the <strong>" + offer.card().getCardName() + "</strong> card.</h4> <p>" + offer.card().getOfferDescription() + "</p>");
+    $("#bestCard").html("<h2>Best card to use is the <strong>" + offer.card().getBank() + " " + offer.card().getCardName() + "</strong> card.</h2> <h3>" + offer.card().getOfferDescription() + "</h3>");
   } else {
     $("#bestCard").html("<h4><span class='label label-danger'>No Results</span> Unfortunately, we didn't find any cards that offered rewards at this location.</h4>")
   }

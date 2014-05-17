@@ -1,5 +1,16 @@
 /* Main JS file for Reward Genie */
 
+/*
+BoA
+Earn 1% cash back on purchases, 2% cash back at grocery stores and 3% cash back on gas
+
+Chase
+5% cash back on up to $1500 in combined purchases at Restaurants and LOWES
+
+Discover
+5% Cashback Bonus at Home Improvement Stores, Furniture Stores, plus Bed Bath & Beyond on up to $1,500 in purchases
+*/
+
 
 
 // Start of execution

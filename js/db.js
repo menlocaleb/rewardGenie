@@ -36,7 +36,10 @@ var Card = Parse.Object.extend("Card", {
 		return this.get("cardName");
 	},
 	getOfferDescription: function() {
-		return this.get("offerDescription")
+		return this.get("offerDescription");
+	},
+	getBank: function() {
+		return this.get("issuerBank");
 	}
 });
 
@@ -168,6 +171,8 @@ function getApplicableCards(placeTypes, callback) {
 
 	// check if any of the placeTypes are listed in the array for which an offer is valid
 	// only one of the placeTypes has to match with any of the places listed in places for an offer
+	// "" is symbolic - if in database entry, means that that reward applies to all purchases.
+	placeTypes.push("");
 	query.containedIn("places", placeTypes);
 
 	query.include("card");
