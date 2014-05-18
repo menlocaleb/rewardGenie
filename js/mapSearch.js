@@ -5,8 +5,8 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
     pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-	setupMap(pos);
-	//alert("Get here 1");
+	 setupMap(pos);
+	// alert("Get here 1");
     }, function() {
       handleNoGeolocation(true);
     });
@@ -17,6 +17,15 @@ function initialize() {
   //alert("Get here 2");
   
 }
+
+function addControl(controlDiv){
+  var input = document.createElement('input');
+  input.className = "controls";
+  input.id = "pac-input";
+  controlUI.title = 'Click to set the map to Home';
+  controlDiv.appendChild(controlUI);
+}
+
 
 function setupMap(position) {
 
@@ -31,8 +40,15 @@ var mapOptions = {
       document.getElementById('pac-input'));
 
   var types = document.getElementById('type-selector');
+
+
+
+
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+  $("#pac-input").css("display","block");
+  $("#type-selector").css("display","block");
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
@@ -55,6 +71,7 @@ var mapOptions = {
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
+
     } else {
       map.setCenter(place.geometry.location);
       map.setZoom(17);  // Why 17? Because it looks good.
@@ -136,7 +153,7 @@ function showBestCard(offer) {
 
 
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 
 

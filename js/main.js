@@ -27,8 +27,8 @@ $(document).ready(function() {
 		
 	});
 
-	initialize();
-	
+	//initialize();
+	google.maps.event.addDomListener(window, 'load', initialize);
 	$('.dropdown-toggle').dropdown();
 	$('#geolocationError').hide();
 	//$('#login').css('display',"none!important");
