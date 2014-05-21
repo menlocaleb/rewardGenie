@@ -19,7 +19,7 @@
 	<title>Reward Genie</title>
 </head>
 <body>
-	<div class="navbar navbar-inverse" role="navigation">
+	<div class="navbar navbar-inverse navbar-static-top" role="navigation">
       <div class="container" id ="headerContainer">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,7 +32,7 @@
         </div>
         <div class="navbar-collapse collapse" >
           <form class="navbar-form navbar-right" role="form" id = "signInForm" style = "display:none;">
-<div class="form-group">
+            <div class="form-group">
               <input type="text" placeholder="Username" class="form-control" name = "username">
             </div>
             <div class="form-group">
@@ -44,7 +44,7 @@
           </form>
              
           <div class = "navbar-right" id = "login"  style = "display:none;">
-                <div class="dropdown btn-group" >
+              <div class="dropdown btn-group" >
                   <a data-toggle="dropdown" href="#" role = "button" id ="dropdownButton">Dropdown trigger
                       <span class="caret"></span>
                   </a>
@@ -56,13 +56,24 @@
                         <li role="presentation" class="divider"></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">....</a></li>
                       </ul>
-                </div>   
+                </div> 
+
                <button type="button" class="btn btn-danger btn-group" id = "logOutButton">Log Out</button> 
                
-            </div>
+          </div>
        </div><!--/.navbar-collapse -->
-
-
+      </div>
+      <div class = "container " id="tabControl">
+        <div class="navbar-collapse collapse" >
+          <ul class="nav nav-tabs nav-justified" id = "myTab">
+                  <li class = "active"><a href="#home" data-toggle = "tab">Home</a></li>
+                  <li><a href="#addCreditCard" data-toggle="tab">Add Credit Card</a></li>
+                  <li><a href="#myCurrentCards" data-toggle="tab">My Current Cards</a></li>
+                  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+                  <li><a href="#settings" data-toggle="tab">Account Settings</a></li>
+          </ul>
+          
+        </div>
       </div>
     </div>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -74,18 +85,15 @@
                 </div>
                   <div class="modal-body">
                     <form method="get" class="signup" action="" id = "signupform" role = "form">
-                        <div class="form-group">
-                          <label for="username">Username</label>
-                          <input type="text" class="form-control" id="username" name = "username"placeholder="Username">
+                       <div class="form-group">
+                          <label for="email">Username</label>
+                          <input type="email" class="form-control" id="email" name = "username" placeholder="Enter email">
                         </div>
                         <div class="form-group">
                           <label for="password">Password</label>
                           <input type="password" class="form-control" id="password" name = "password"placeholder="Password">
                         </div>
-                        <div class="form-group">
-                          <label for="email">Email address</label>
-                          <input type="email" class="form-control" id="email" name = "email" placeholder="Enter email">
-                        </div>
+                        
                   </div>
                          <div class="modal-footer">
                           <button class="btn btn-success" type="submit" id = "popUpSignUpButton">Sign Up</button>

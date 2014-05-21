@@ -3,33 +3,56 @@ layout: default
 title: Reward Genie
 ---
 
-    
-<!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Welcome to Reward Genie!</h1>
-        <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
-		<!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
-		<p><a href="findRewards.html" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
-      </div>
-    </div>
+    <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="jumbotron">
+                  <div class="container">
+                    <h1>Welcome to Reward Genie!</h1>
+                    <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
+                <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
+                <p><a href="findRewards.html" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
+                  </div>
+                </div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Convenient</h2>
-          <p>Create an account, add your card numbers, then check how to maximize your rewards with a single click or tap! </p>
-      
-        </div>
-        <div class="col-md-4">
-          <h2>Free</h2>
-          <p>As a student project, this service is free for now! </p>
-          
-       </div>
-        <div class="col-md-4">
-          <h2>Safe</h2>
-          <p>We only use the first 6 numbers of your credit cards, and will never ask you for any more information about your bank accounts. We never try to access your accounts, nor could we if we tried! </p>
-          
-        </div>
-      </div>
+                <div class="container">
+                  <!-- Example row of columns -->
+                  <div class="row">
+                    <div class="col-md-4">
+                      <h2>Convenient</h2>
+                      <p>Create an account, add your card numbers, then check how to maximize your rewards with a single click or tap! </p>
+                  
+                    </div>
+                    <div class="col-md-4">
+                      <h2>Free</h2>
+                      <p>As a student project, this service is free for now! </p>
+                      
+                   </div>
+                    <div class="col-md-4">
+                      <h2>Safe</h2>
+                      <p>We only use the first 6 numbers of your credit cards, and will never ask you for any more information about your bank accounts. We never try to access your accounts, nor could we if we tried! </p>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="addCreditCard" style = "">
+              <h2 style = "text-align:center;">Add New Credit Card</h2>
+                <div>
+                <input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" style = "width :70%;">
+                <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
+              </div>
+              <h4 id="usercardInfoOutput" style="text-align: center; color:red;"></h4>
+
+            </div>
+            <div class="tab-pane" id="myCurrentCards">
+              <h2>My Current Cards</h2>
+              <div id = "cardLists">
+
+              </div>
+            </div>
+            <div class="tab-pane" id="profile">3</div>
+            <div class="tab-pane" id="settings">4</div>
+  
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    

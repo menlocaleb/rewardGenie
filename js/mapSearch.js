@@ -19,11 +19,19 @@ function initialize() {
 }
 
 function addControl(controlDiv){
-  var input = document.createElement('input');
+  var input = document.createElement('div');
   input.className = "controls";
   input.id = "pac-input";
-  controlUI.title = 'Click to set the map to Home';
-  controlDiv.appendChild(controlUI);
+  controlDiv.appendChild(input);
+
+  var types = document.createElement('div');
+  types.className = "controls";
+  types.id = "type-selector";
+  controlDiv.appendChild(types);
+
+
+
+
 }
 
 
