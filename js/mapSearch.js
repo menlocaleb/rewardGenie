@@ -112,7 +112,7 @@ var mapOptions = {
     // function from db.js
     getApplicableCards(place.types, place.name, function(offers) {
       if (offers.length > 0) {
-        //console.log(offers);
+        console.log(offers);
         showBestCard(offers[0]);
       } else {
         //console.log("no applicable cards found.")
