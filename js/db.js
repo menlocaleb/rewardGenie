@@ -17,6 +17,15 @@ var User = Parse.Object.extend("User", {
 	getPassword: function(){
 		return this.get("password");
 	},
+	// NOT WORKING YET!	
+	cards: function() {
+		return this.relation("cardsToUser");
+	},
+	addCard: function(card) {
+		var relation = this.relation("cardsToUser");
+		relation.add(card);
+		return this.save();
+	}
 	
 
 });
@@ -147,7 +156,10 @@ function addCreditCard(number){
 			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
 			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
+
 			handleCurrentCard(data);
+			currentCard = data;
+
 		})
 		.fail(function() {
 			$("#usercardInfoOutput").html("Getting card data failed.");
@@ -212,7 +224,6 @@ function getCardsByBankAndBrand(bankName, brand, callback) {
 		query.equalTo("brand", brand);
 	}
 
-
 	query.find({
 	  success: function(results) {
 	    console.log("Successfully retrieved " + results.length + " cards.");
@@ -227,27 +238,58 @@ function getCardsByBankAndBrand(bankName, brand, callback) {
 	});	
 }
 
+
+
+function getUserCards(callback) {
+	if (currentUser) {
+		var relation = currentUser.relation("cardsToUser");
+		relation.query().find({
+			success: function(list) {
+				if (callback && typeof(callback) == "function") {
+					callback(list);
+				}
+			},
+			error: function(error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+	}
+	
+}
+
+
+
 // Research on how to set up relations
 //https://parse.com/questions/building-data-relationships-when-to-use-pointer-or-relation-type
 
 // takes in list of Google business types, and callback
 // checks parse for list of cards that have rewards for this type of place, then return data to callback
-function getApplicableCards(placeTypes, callback) {
-	var query = new Parse.Query(Offer);
+// will only call callback if not null and of type function
+function getApplicableCards(placeTypes, placeName, callback) {
+	var offers = new Parse.Query(Offer);
+	var specialOffers = new Parse.Query(Offer);
 
 	// check if any of the placeTypes are listed in the array for which an offer is valid
 	// only one of the placeTypes has to match with any of the places listed in places for an offer
 	// "" is symbolic - if in database entry, means that that reward applies to all purchases.
 	placeTypes.push("");
-	query.containedIn("places", placeTypes);
+	offers.containedIn("places", placeTypes);
 
-	query.include("card");
-	query.descending("offerPercent");
+	// check if the place name is the whole name or the beginning of a name of a business with a special offer
+	specialOffers.startsWith("businessName", placeName);
+	
 
-	query.find({
+	// search for both regular and sepcial offers
+	var mainQuery = Parse.Query.or(specialOffers, offers);
+	mainQuery.include("card");				// pull card data with offer data (so we know which one to recommend)
+	mainQuery.descending("offerPercent");	// top result should be best offer percent
+
+	mainQuery.find({
 	  success: function(results) {
 	    console.log("Successfully retrieved " + results.length + " offers.");
-	    callback(results);
+	    if (callback && typeof(callback) == "function") {
+	    	callback(results);
+	    }
 	  },
 	  error: function(error) {
 	    console.log("Error: " + error.code + " " + error.message);
@@ -255,8 +297,8 @@ function getApplicableCards(placeTypes, callback) {
 	});
 
 	// for debugging/testing
-	console.log("Place types:");
-	console.log(placeTypes);
+	//console.log("Place types:");
+	//console.log(placeTypes);
 }
 
 
