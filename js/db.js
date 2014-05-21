@@ -163,17 +163,24 @@ function saveCardToUser(){
 
 
 // if bankName is null/not given then all cards are fetched
-function getCardsByBank(bankName) {
+// if either arg null, then not used for search
+function getCardsByBankAndBrand(bankName, brand, callback) {
 	var query = new Parse.Query(Card);
+	
+	if (bankName) {
+		query.equalTo("issuerBank", bankName);
+	}
+	if (brand) {
+		query.equalTo("brand", brand);
+	}
 	
 
 	query.find({
 	  success: function(results) {
 	    console.log("Successfully retrieved " + results.length + " cards.");
 	    // Do something with the returned Parse.Object values
-	    for (var i = 0; i < results.length; i++) { 
-	      var object = results[i];
-	      console.log(object.id + ' - ' + object.get('cardName'));
+	    if (callback && typeof(callback) == "function") {
+	    	callback(results);
 	    }
 	  },
 	  error: function(error) {
@@ -187,7 +194,7 @@ function getCardsByBank(bankName) {
 
 // takes in list of Google business types, and callback
 // checks parse for list of cards that have rewards for this type of place, then return data to callback
-function getApplicableCards(placeTypes, callback) {
+function getApplicableCards(placeTypes, placeName, callback) {
 	var query = new Parse.Query(Offer);
 
 	// check if any of the placeTypes are listed in the array for which an offer is valid
@@ -210,8 +217,8 @@ function getApplicableCards(placeTypes, callback) {
 	});
 
 	// for debugging/testing
-	console.log("Place types:");
-	console.log(placeTypes);
+	//console.log("Place types:");
+	//console.log(placeTypes);
 }
 
 

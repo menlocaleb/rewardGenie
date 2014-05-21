@@ -48,7 +48,9 @@ $(document).ready(function() {
 	//$('#map-canvas').show();
 
 	// Test get card details
-	getCardsByBank('bankName');
+	getCardsByBankAndBrand('Bank of America', 'Visa', function(results) {
+		console.log(results);
+	});
 
 
 	$("#inputCreditCard").keyup(function(){

@@ -106,14 +106,16 @@ var mapOptions = {
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
 
+
+    console.log(place);
     // Do card recommendations based on place.types
     // function from db.js
-    getApplicableCards(place.types, function(offers) {
+    getApplicableCards(place.types, place.name, function(offers) {
       if (offers.length > 0) {
-        console.log(offers);
+        //console.log(offers);
         showBestCard(offers[0]);
       } else {
-        console.log("no applicable cards found.")
+        //console.log("no applicable cards found.")
         showBestCard(false);
       }
     });
