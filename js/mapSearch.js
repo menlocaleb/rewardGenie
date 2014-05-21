@@ -5,8 +5,8 @@ function initialize() {
     navigator.geolocation.getCurrentPosition(function(position) {
     pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
-	setupMap(pos);
-	//alert("Get here 1");
+	 setupMap(pos);
+	// alert("Get here 1");
     }, function() {
       handleNoGeolocation(true);
     });
@@ -16,6 +16,23 @@ function initialize() {
   }
   
 }
+
+function addControl(controlDiv){
+  var input = document.createElement('div');
+  input.className = "controls";
+  input.id = "pac-input";
+  controlDiv.appendChild(input);
+
+  var types = document.createElement('div');
+  types.className = "controls";
+  types.id = "type-selector";
+  controlDiv.appendChild(types);
+
+
+
+
+}
+
 
 function setupMap(position) {
 
@@ -29,12 +46,21 @@ function setupMap(position) {
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
 
+
   //var types = document.getElementById('type-selector');
   var clearButton = document.getElementById('input-control')
+  var types = document.getElementById('type-selector');
+
+
+
+
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
 
   
+
+  $("#pac-input").css("display","block");
+  $("#type-selector").css("display","block");
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
@@ -57,6 +83,7 @@ function setupMap(position) {
     // If the place has a geometry, then present it on a map.
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
+
     } else {
       map.setCenter(place.geometry.location);
       map.setZoom(17);  // Why 17? Because it looks good.
@@ -151,7 +178,7 @@ function showBestCard(offer) {
 
 
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 
 

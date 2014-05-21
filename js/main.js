@@ -17,12 +17,17 @@ Discover
 
 
 // Start of execution
+var prevString = "";
 $(document).ready(function() {
 
 	$("#getCardDetailsButton").click(function() {
 		cardInfo.lookupCardNumber($("#cardNumberInput").val())
 		.done(function(data) {
-			$("#cardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			if (data.bank.valueOf("")||data.card_type.valueOf(""))
+				$("#cardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			else {
+				$("#cardInfoOutput").html("The Bank infomation is not available.");
+			}
 		})
 		.fail(function() {
 			alert("Getting card data failed.");
@@ -30,21 +35,51 @@ $(document).ready(function() {
 		
 	});
 
-	initialize();
-	
+	//initialize();
+	google.maps.event.addDomListener(window, 'load', initialize);
 	$('.dropdown-toggle').dropdown();
 	$('#geolocationError').hide();
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
 		$('#login').hide();
+		$("#tabControl").hide();
 		$("#signInForm").show();
 	}
 	else {
 		handleLogin(currentUser);
 	}
 
-	
+	// Test get card details
+	getCardsByBank('bankName');
+
+
+	$("#inputCreditCard").keyup(function(){
+		var inputCreditCard = $('#inputCreditCard');
+		if (inputCreditCard.val().length != 6) {
+			$("#usercardInfoOutput").html("Please Input An Six-digit Number.");
+			$("#usercardInfoOutput").prop("class","alert alert-danger");
+			$("#addCreditCardToUser").hide();
+		}
+		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
+				(inputCreditCard.val() == prevString ) ){
+			inputCreditCard.data('val',inputCreditCard.val());
+			addCreditCard(inputCreditCard.val());
+			prevString = inputCreditCard.val();
+			
+		}
+		else if (inputCreditCard.val().valueOf("")) {
+			$("#usercardInfoOutput").html("");
+			$("#addCreditCardToUser").hide();
+		}
+
+
+	});
+
+
 });
+
+
+
 
 
 $("#logOutButton").click(function(){
@@ -78,6 +113,19 @@ $('#signInForm').submit(function(e){
 	return false;
 });
 
+
+function showTabBar(){
+	
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	  e.target // activated tab
+	  e.relatedTarget // previous tab
+	});
+
+	$('#myTab a').click(function (e) {
+		  e.preventDefault();
+		  $(this).tab('show');
+	})
+}
 
 
 

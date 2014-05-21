@@ -3,6 +3,7 @@ Parse.initialize("8IE4lU1jvQt72tVNPLfLg6YKsDMD5rR8pIUYUkg7", "rqKaLUoGAUZMWojI0I
 
 var currentUser = Parse.User.current();
 var userLoginStatus = false;
+var currentCard;
 
 var User = Parse.Object.extend("User", {
 	//to prevent front end typo. Wrap up all gets and sets
@@ -15,9 +16,7 @@ var User = Parse.Object.extend("User", {
 	getPassword: function(){
 		return this.get("password");
 	},
-	getEmail: function(){
-		return this.get("email");
-	}
+	
 
 });
 
@@ -43,7 +42,11 @@ var Card = Parse.Object.extend("Card", {
 	}
 });
 
+//var UserCard  = Parse.Card.extend("Card",)
 
+
+
+//save the sign up form to server
 function addUser(dataArray){
 
 	var user = new Parse.User();
@@ -102,6 +105,10 @@ function saveUserToServer(user){
 
 
 
+/** Detect if the user has logged in.
+If so, show the logged status header and tabbar controller
+If not, show the signIn header
+*/
 
 function handleLogin(user){
 
@@ -111,12 +118,11 @@ function handleLogin(user){
 			userLoginStatus = true;
 			var button  = $("#dropdownButton");
 			var name = user.getUsername();
-			console.log(button);
-			console.log(name);
-			//button.prop('value',name);
 			button.text(name);
 			loginElement.show();			
 			$('#signInForm').hide();
+			$("#tabControl").show();
+			showTabBar();
 
 		}
 		else {
@@ -127,15 +133,30 @@ function handleLogin(user){
 			$("#signInForm")[0].reset();
 			currentUser = null;
 			Parse.User.logOut();
-			//parent.location.reload();
+			$("#tabControl").hide();
+			window.reload();
 		}
 }
 
 
 
+function addCreditCard(number){
+	cardInfo.lookupCardNumber(number)
+		.done(function(data) {
+			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			$("#usercardInfoOutput").prop("class","alert alert-success")
+			$("#addCreditCardToUser").show();
+			currentCard = data;
+		})
+		.fail(function() {
+			$("#usercardInfoOutput").html("Getting card data failed.");
+			$("#usercardInfoOutput").prop("class","alert alert-danger")
+			$("#addCreditCardToUser").hide();
+		});
+}
 
-function isLoggin(user){
-	
+function saveCardToUser(){
+
 
 }
 
