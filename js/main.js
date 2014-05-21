@@ -55,6 +55,7 @@ $(document).ready(function() {
 		var inputCreditCard = $('#inputCreditCard');
 		if (inputCreditCard.val().length != 6) {
 			$("#usercardInfoOutput").html("Please Input An Six-digit Number.");
+			$("#usercardInfoOutput").prop("class","alert alert-danger");
 			$("#addCreditCardToUser").hide();
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||

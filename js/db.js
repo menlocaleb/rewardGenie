@@ -134,7 +134,7 @@ function handleLogin(user){
 			currentUser = null;
 			Parse.User.logOut();
 			$("#tabControl").hide();
-			//parent.location.reload();
+			window.reload();
 		}
 }
 
@@ -144,11 +144,13 @@ function addCreditCard(number){
 	cardInfo.lookupCardNumber(number)
 		.done(function(data) {
 			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
 			currentCard = data;
 		})
 		.fail(function() {
 			$("#usercardInfoOutput").html("Getting card data failed.");
+			$("#usercardInfoOutput").prop("class","alert alert-danger")
 			$("#addCreditCardToUser").hide();
 		});
 }
