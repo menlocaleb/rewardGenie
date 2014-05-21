@@ -17,6 +17,21 @@ Discover
 var prevString = "";
 $(document).ready(function() {
 
+	if (currentUser) {
+		getUserCards();
+	}
+
+
+	$("#nav-current-cards").click(function() {
+		getUserCards(function(list) {
+			var html = "";
+			for (var i = 0; i < list.length; i++) {
+				html += "<h2>"+list[i].getCardName()+"</h2>";
+			}
+			$("#cardLists").html(html);
+		});
+	});
+
 	$("#getCardDetailsButton").click(function() {
 		cardInfo.lookupCardNumber($("#cardNumberInput").val())
 		.done(function(data) {

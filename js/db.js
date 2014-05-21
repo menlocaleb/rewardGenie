@@ -16,6 +16,15 @@ var User = Parse.Object.extend("User", {
 	getPassword: function(){
 		return this.get("password");
 	},
+	// NOT WORKING YET!	
+	cards: function() {
+		return this.relation("cardsToUser");
+	},
+	addCard: function(card) {
+		var relation = this.relation("cardsToUser");
+		relation.add(card);
+		return this.save();
+	}
 	
 
 });
@@ -147,6 +156,7 @@ function addCreditCard(number){
 			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
 			currentCard = data;
+			
 		})
 		.fail(function() {
 			$("#usercardInfoOutput").html("Getting card data failed.");
@@ -187,6 +197,25 @@ function getCardsByBankAndBrand(bankName, brand, callback) {
 	    console.log("Error: " + error.code + " " + error.message);
 	  }
 	});	
+}
+
+
+
+function getUserCards(callback) {
+	if (currentUser) {
+		var relation = currentUser.relation("cardsToUser");
+		relation.query().find({
+			success: function(list) {
+				if (callback && typeof(callback) == "function") {
+					callback(list);
+				}
+			},
+			error: function(error) {
+				console.log("Error: " + error.code + " " + error.message);
+			}
+		});
+	}
+	
 }
 
 
