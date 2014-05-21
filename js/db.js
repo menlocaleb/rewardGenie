@@ -4,6 +4,7 @@ Parse.initialize("8IE4lU1jvQt72tVNPLfLg6YKsDMD5rR8pIUYUkg7", "rqKaLUoGAUZMWojI0I
 var currentUser = Parse.User.current();
 var userLoginStatus = false;
 var currentCard;
+var cardlists;
 
 var User = Parse.Object.extend("User", {
 	//to prevent front end typo. Wrap up all gets and sets
@@ -146,7 +147,7 @@ function addCreditCard(number){
 			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
 			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
-			currentCard = data;
+			handleCurrentCard(data);
 		})
 		.fail(function() {
 			$("#usercardInfoOutput").html("Getting card data failed.");
@@ -157,23 +158,67 @@ function addCreditCard(number){
 
 function saveCardToUser(){
 
+	var relation = currentUser.relation("cardsToUser");
+	var selectedCard = $("#selectCard").find(":selected").text();
+	//console.log(cardlists);
+	//console.log(cardlists[0].getCardName());
+	for (var i = 0;i<cardlists.length;i++){
+		if (cardlists[i].getCardName() ===  selectedCard){
+			currentCard = cardlists[i];
+			console.log("relation added!")
+		}
+	}
+
+	relation.add(currentCard);
+	currentUser.save();
+}
+
+
+function handleCurrentCard(data){
+	console.log(data);
+	getCardsByBankAndBrand(data.bank, data.brand, function(results) {
+		//console.log(results);
+	cardlists  = results;	
+	$("#selectCard").empty();	
+		for (var i=0 ;i<results.length;i++){
+			$("#selectCard").append('<option>'+results[i].getCardName()+'</option>');
+		}
+			
+	});
+}
+
+
+function getCurrentCardsForUser(){
+	if (currentUser){
+		
+
+	}
+
 
 }
 
 
 
+
+
 // if bankName is null/not given then all cards are fetched
-function getCardsByBank(bankName) {
+function getCardsByBankAndBrand(bankName, brand, callback) {
 	var query = new Parse.Query(Card);
-	
+
+	if (bankName) {
+		query.equalTo("issuerBank", bankName);
+	}
+	if (brand) {
+		query.equalTo("brand", brand);
+	}
+
 
 	query.find({
 	  success: function(results) {
 	    console.log("Successfully retrieved " + results.length + " cards.");
 	    // Do something with the returned Parse.Object values
-	    for (var i = 0; i < results.length; i++) { 
-	      var object = results[i];
-	      console.log(object.id + ' - ' + object.get('cardName'));
+	    if (callback && typeof(callback) == "function") {
+	    	callback(results);
 	    }
 	  },
 	  error: function(error) {

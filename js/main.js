@@ -50,8 +50,7 @@ $(document).ready(function() {
 	}
 
 	// Test get card details
-	getCardsByBank('bankName');
-
+	
 
 	$("#inputCreditCard").keyup(function(){
 		var inputCreditCard = $('#inputCreditCard');
@@ -62,6 +61,7 @@ $(document).ready(function() {
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
 				(inputCreditCard.val() == prevString ) ){
+			console.log("happened!");
 			inputCreditCard.data('val',inputCreditCard.val());
 			addCreditCard(inputCreditCard.val());
 			prevString = inputCreditCard.val();
