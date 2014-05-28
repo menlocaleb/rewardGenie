@@ -2,27 +2,49 @@
 layout: default
 title: Reward Genie
 ---
-	
-<div class="container" style="height: 100%">
-    <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name">
 
-    <div id="input-control" class="controls">
-        <span id="clear-pac-input">Clear</span>
+    
+<div class="tab-content">
+    <div class="tab-pane active" id="home">
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name">
+
+        <div id="input-control" class="controls">
+            <span id="clear-pac-input">Clear</span>
+        </div>
+        <!--<div id="type-selector" class="controls">
+
+        <input id="pac-input" class="controls" type="text"
+            placeholder="Enter a location" style = "display:none;">
+        <div id="type-selector" class="controls" style = "display:none;">
+
+          <input type="radio" name="type" id="changetype-all" checked="checked">
+          <label for="changetype-all">All</label>
+        </div>-->
+        <div id="map-canvas2" style="height: 45%"></div>
+
+        <div id="recommendedCards">
+            <div id="bestCard">
+            </div> 
+        </div>
     </div>
-    <!--<div id="type-selector" class="controls">
 
-    <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location" style = "display:none;">
-    <div id="type-selector" class="controls" style = "display:none;">
+    <div class="tab-pane" id="addCreditCard" style = "">
+      <h2 style = "text-align:center;">Add New Credit Card</h2>
+        <div>
+        <input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" style = "width :70%;">
+        <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
+      </div>
+      <h4 id="usercardInfoOutput" class = "" style="text-align: center; "></h4>
+      <select class="form-control" id = "selectCard"></select>
 
-      <input type="radio" name="type" id="changetype-all" checked="checked">
-      <label for="changetype-all">All</label>
-    </div>-->
-    <div id="map-canvas2" style="height: 45%"></div>
-
-    <div id="recommendedCards">
-    	<div id="bestCard">
-    	</div> 
     </div>
+    <div class="tab-pane" id="myCurrentCards">
+      <h2>My Current Cards</h2>
+      <div id = "cardLists">
+
+      </div>
+    </div>
+    <div class="tab-pane" id="profile">3</div>
+    <div class="tab-pane" id="settings">4</div>
 
 

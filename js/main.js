@@ -97,6 +97,7 @@ $(document).ready(function() {
 
 $("#logOutButton").click(function(){
 		handleLogin(currentUser);
+		document.location.href = "index.html"
 });
 
 

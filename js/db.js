@@ -133,7 +133,10 @@ function handleLogin(user){
 			$('#signInForm').hide();
 			$("#tabControl").show();
 			showTabBar();
-
+			var url = document.location.href;
+			if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
+				
+			}
 		}
 		else {
 			userLoginStatus = false;
@@ -144,7 +147,8 @@ function handleLogin(user){
 			currentUser = null;
 			Parse.User.logOut();
 			$("#tabControl").hide();
-			window.reload();
+			//window.reload();
+			document.location.href = "/index.html";
 		}
 }
 
