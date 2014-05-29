@@ -68,9 +68,16 @@ $(document).ready(function() {
 	});
 
 	//initialize();
-	google.maps.event.addDomListener(window, 'load', initialize);
-	$('.dropdown-toggle').dropdown();
-	$('#geolocationError').hide();
+	$('#home a[href="#findRewards"]').on('shown.bs.tab', function (e) {
+		google.maps.event.addDomListener(window, 'load', initialize);
+		//alert("get here");
+		//$('.dropdown-toggle').dropdown();
+		//$('#geolocationError').hide();
+	});
+	//google.maps.event.addDomListener(window, 'load', initialize);
+	//$('.dropdown-toggle').dropdown();
+	//$('#geolocationError').hide();
+	
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
 		$('#login').hide();
