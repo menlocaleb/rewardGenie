@@ -142,6 +142,7 @@ function handleLogin(user){
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
 			currentUser = null;
+			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
 			$("#tabControl").hide();
 			window.reload();
