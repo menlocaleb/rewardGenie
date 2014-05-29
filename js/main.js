@@ -68,15 +68,9 @@ $(document).ready(function() {
 	});
 
 	//initialize();
-	$('#home a[href="#findRewards"]').on('shown.bs.tab', function (e) {
-		google.maps.event.addDomListener(window, 'load', initialize);
-		//alert("get here");
-		//$('.dropdown-toggle').dropdown();
-		//$('#geolocationError').hide();
-	});
-	//google.maps.event.addDomListener(window, 'load', initialize);
-	//$('.dropdown-toggle').dropdown();
-	//$('#geolocationError').hide();
+	google.maps.event.addDomListener(window, 'load', initialize);
+	$('.dropdown-toggle').dropdown();
+	$('#geolocationError').hide();
 	
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
