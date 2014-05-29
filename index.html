@@ -10,7 +10,8 @@ title: Reward Genie
                     <h1>Welcome to Reward Genie!</h1>
                     <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
                 <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
-                <p><a href="#findRewards" data-toggle="tab" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
+                <!--<p><a href="#findRewards" data-toggle="tab" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>-->
+				<p><a href="findRewards.html" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
                   </div>
                 </div>
 
@@ -40,16 +41,15 @@ title: Reward Genie
               <h2 style = "text-align:center;">Add New Credit Card</h2>
                 <div>
                 <input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" style = "width :70%;">
-                <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
+                
               </div>
               <h4 id="usercardInfoOutput" class = "" style="text-align: center; "></h4>
               <select class="form-control" id = "selectCard"></select>
-
+              <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
             </div>
             <div class="tab-pane" id="myCurrentCards" style = "margin:15px;">
               <h2>My Current Cards</h2>
               <div id = "cardLists">
-
               </div>
             </div>
             <div class="tab-pane" id="profile" style = "margin:15px;">3</div>
