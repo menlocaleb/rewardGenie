@@ -47,6 +47,9 @@ var Card = Parse.Object.extend("Card", {
 	getOfferDescription: function() {
 		return this.get("offerDescription");
 	},
+	getId : function(){
+		return this.get("Id");
+	},
 	getBank: function() {
 		return this.get("issuerBank");
 	}
@@ -200,15 +203,37 @@ function handleCurrentCard(data){
 }
 
 
-function getCurrentCardsForUser(){
-	if (currentUser){
+// function getCurrentCardsForUser(){
+// 	if (currentUser){
 		
 
-	}
+// 	}
+
+
+// }
+
+
+function removeCards(card){
+	var relation = currentUser.relation("cardsToUser");
+	//console.log(card);
+	getUserCards(function(list) {
+			console.log(list);
+			var cardId  = $(card).prop("id");
+			for (var i = 0;i<list.length;i++){
+				if (cardId === list[i].id){
+					relation.remove(list[i]);
+					currentUser.save();
+					alert("delete it");
+					break;
+				}
+			}
+
+		});
+	
+	
 
 
 }
-
 
 
 

@@ -27,11 +27,28 @@ $(document).ready(function() {
 
 	$("#nav-current-cards").click(function() {
 		getUserCards(function(list) {
+
 			var html = "";
+			var childNode  ='';
+			// for (var i = 0; i < list.length; i++) {
+			// 	html += "<h2>"+list[i].getCardName()+"</h2>";
+			// }
+			// $("#cardLists").html(html);
+			$("#cardLists").empty();
+
 			for (var i = 0; i < list.length; i++) {
-				html += "<h2>"+list[i].getCardName()+"</h2>";
+				html = '<span style  = "font:12oz;">'+list[i].getCardName()+"</span>";
+				//childNode = '<div '+ 'id = '+list[i].getId()+'><p>'+html+'</p>'
+				console.log(list[i]);
+				childNode = '<div '+ 'id = '+list[i].id+'>'+'<br>'+html
+				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
+				+'</div>';
+				$("#cardLists").append(childNode);
 			}
-			$("#cardLists").html(html);
+
+
+
+
 		});
 	});
 
@@ -125,6 +142,16 @@ $('#signInForm').submit(function(e){
 
 	return false;
 });
+
+
+
+function dofordrop(x){
+	var card = $(x).parent();
+	$(card).remove();
+	removeCards(card);
+}
+
+
 
 
 function showTabBar(){
