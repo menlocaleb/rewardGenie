@@ -182,6 +182,7 @@ function saveCardToUser(){
 		if (cardlists[i].getCardName() ===  selectedCard){
 			currentCard = cardlists[i];
 			console.log("relation added!")
+			alert.log("card added!");
 		}
 	}
 
