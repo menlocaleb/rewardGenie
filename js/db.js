@@ -157,7 +157,11 @@ function handleLogin(user){
 function addCreditCard(number){
 	cardInfo.lookupCardNumber(number)
 		.done(function(data) {
-			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			var innerHtml = "Bank: " + data.bank + "<br/> Card Brand: " + data.brand+"<br/> Card Type: " + data.card_type
+								+"<p/> Card Category: " + data.card_category+ "<p/> Country Name: "+data.country_name ;
+				
+
+			$("#usercardInfoOutput").html(innerHtml);
 			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
 
@@ -181,18 +185,44 @@ function saveCardToUser(){
 	for (var i = 0;i<cardlists.length;i++){
 		if (cardlists[i].getCardName() ===  selectedCard){
 			currentCard = cardlists[i];
-			console.log("relation added!")
-			alert.log("card added!");
+			
+			//alert.log("card added!");
 		}
 	}
+	$('#successAdd').modal('show');
+	//console.log($('#usercardInfoOutput').html());
+	$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
 
 	relation.add(currentCard);
 	currentUser.save();
+	console.log("relation added!");
 }
+
+$( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+$( "#dialog-message" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+
 
 
 function handleCurrentCard(data){
-	console.log(data);
+	//console.log(data);
 	getCardsByBankAndBrand(data.bank, data.brand, function(results) {
 		//console.log(results);
 	cardlists  = results;	
