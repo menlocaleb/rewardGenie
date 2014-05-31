@@ -37,10 +37,11 @@ $(document).ready(function() {
 			$("#cardLists").empty();
 
 			for (var i = 0; i < list.length; i++) {
-				html = '<span style  = "font:12oz;">'+list[i].getCardName()+"</span>";
+				html = '<h3>'+list[i].getBank() + ' ' + list[i].getCardName()+"</h3>";
+				html += '<p>' + list[i].getOfferDescription() + '</p>';
 				//childNode = '<div '+ 'id = '+list[i].getId()+'><p>'+html+'</p>'
 				console.log(list[i]);
-				childNode = '<div '+ 'id = '+list[i].id+'>'+'<br>'+html
+				childNode = '<div '+ 'id = '+list[i].id+' class="col-md-6 col-md-offset-3 card-list-div">'+'<br>'+ html
 				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
 				+'</div>';
 				$("#cardLists").append(childNode);
@@ -102,6 +103,8 @@ $(document).ready(function() {
 			$("#addCreditCardToUser").hide();
 			$("#cardInfoOutput").hide();
 			$("#rewards").hide();
+			$("#usercardInfoOutput").prop("class","");
+			$("#usercardInfoOutput").html("");
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
 				(inputCreditCard.val() == prevString ) ){
@@ -112,7 +115,8 @@ $(document).ready(function() {
 			prevString = inputCreditCard.val();
 			
 		}
-		else if (inputCreditCard.val().valueOf("")) {
+		// !!!! WILL NEVER REACH HERE EVER B/C OF FIRST IF STATEMENT
+		else if (inputCreditCard.val() === "") {
 			$("#usercardInfoOutput").html("");
 			$("#addCreditCardToUser").hide();
 		}

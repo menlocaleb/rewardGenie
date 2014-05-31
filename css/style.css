@@ -17,7 +17,10 @@
 
 
 
-
+.card-list-div {
+  border-bottom: 1px #CCCCCC solid;
+  padding-bottom: 10px;
+}
 
 
 

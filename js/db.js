@@ -163,12 +163,24 @@ function handleLogin(user){
 function addCreditCard(number){
 	cardInfo.lookupCardNumber(number)
 		.done(function(data) {
-			var innerHtml = "Bank: " + data.bank + "<br/> Card Brand: " + data.brand+"<br/> Card Type: " + data.card_type
-								+"<p/> Card Category: " + data.card_category+ "<p/> Country Name: "+data.country_name ;
+			var innerHtml = '';
+
+			if (data.bank) {
+				innerHtml += "Bank: " + data.bank + "<br/>";
+				if (data.brand) {
+					innerHtml += "Brand: " + data.brand + "<br/>";
+				}
+			} else if (data.brand) {
+				innerHtml += "Issuer: " + data.brand + "<br/>";
+			}
+
+			if (data.card_type) {
+				innerHtml += "Card Type: " + data.card_type + "<br/>";
+			}
 				
 
 			$("#usercardInfoOutput").html(innerHtml);
-			$("#usercardInfoOutput").prop("class","alert alert-success")
+			$("#usercardInfoOutput").prop("class","alert alert-success");
 			$("#addCreditCardToUser").show();
 
 			handleCurrentCard(data);
@@ -195,13 +207,18 @@ function saveCardToUser(){
 			//alert.log("card added!");
 		}
 	}
-	$('#successAdd').modal('show');
-	//console.log($('#usercardInfoOutput').html());
-	$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
 
 	relation.add(currentCard);
-	currentUser.save();
-	console.log("relation added!");
+	currentUser.save(null, {
+		success: function() {
+			$('#successAdd').modal('show');
+			//console.log($('#usercardInfoOutput').html());
+			$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
+		},
+		error: function() {
+			console.log("error saving card to user.");
+		} 
+	});
 }
 
 $( "#dialog-message" ).dialog({
@@ -232,10 +249,12 @@ function handleCurrentCard(data){
 	getCardsByBankAndBrand(data.bank, data.brand, function(results) {
 		//console.log(results);
 	cardlists  = results;	
-	$("#selectCard").empty();	
-		for (var i=0 ;i<results.length;i++){
-			$("#selectCard").append('<option>'+results[i].getCardName()+'</option>');
-		}
+	$("#selectCard").empty();
+	// put "Choose a card" in list
+	$("#selectCard").append('<option>Choose a card...</option>');	
+	for (var i=0 ;i<results.length;i++){
+		$("#selectCard").append('<option>'+results[i].getCardName()+'</option>');
+	}
 			
 	});
 }
