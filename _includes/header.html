@@ -13,9 +13,10 @@
   <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-    <script type="text/javascript" src="js/mapSearch.js"></script>
-    <script type="text/javascript" src = "js/jquery-ui-1.10.4.custom.js"></script>
-  <!-- Our javascript is at bottom of body -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/mapSearch.js"></script>
+   <script type="text/javascript" src = "js/jquery-ui-1.10.4.custom.js"></script>
+  <!-- More javascript is at bottom of body -->
 
   <title>Reward Genie</title>
 </head>
@@ -70,32 +71,11 @@
                   <li class = "active"><a href="#home" data-toggle = "tab">Home</a></li>
                   <li><a href="#addCreditCard" data-toggle="tab">Add Credit Card</a></li>
                   <li><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">My Current Cards</a></li>
-                  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-                  <li><a href="#settings" data-toggle="tab">Account Settings</a></li>
           </ul>
           
         </div>
       </div>
     </div>
-
-    <div class="tab-pane" id="addCreditCard" style = "">
-      <h2 style = "text-align:center;">Add New Credit Card</h2>
-        <div>
-        <input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" style = "width :70%;">
-        <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
-      </div>
-      <h4 id="usercardInfoOutput" class = "" style="text-align: center; "></h4>
-      <select class="form-control" id = "selectCard"></select>
-
-    </div>
-    <div class="tab-pane" id="myCurrentCards">
-      <h2>My Current Cards</h2>
-      <div id = "cardLists">
-
-      </div>
-    </div>
-    <div class="tab-pane" id="profile">3</div>
-    <div class="tab-pane" id="settings">4</div>
     
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div id="signUpPop" class="modal-dialog">

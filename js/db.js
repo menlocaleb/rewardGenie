@@ -135,6 +135,7 @@ function handleLogin(user){
 			loginElement.show();			
 			$('#signInForm').hide();
 			$("#tabControl").show();
+			$('#find-rewards-button').show();
 			showTabBar();
 			var url = document.location.href;
 			if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
@@ -147,6 +148,7 @@ function handleLogin(user){
 			$("#login").hide();
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
+			$('#find-rewards-button').hide();
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
@@ -203,25 +205,25 @@ function saveCardToUser(){
 }
 
 $( "#dialog-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
+  modal: true,
+  buttons: {
+    Ok: function() {
+      $( this ).dialog( "close" );
+    }
+  }
+});
 
 $( "#dialog-message" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 1000
-      }
-    });
+  autoOpen: false,
+  show: {
+    effect: "blind",
+    duration: 1000
+  },
+  hide: {
+    effect: "explode",
+    duration: 1000
+  }
+});
 
 
 
@@ -239,35 +241,23 @@ function handleCurrentCard(data){
 }
 
 
-// function getCurrentCardsForUser(){
-// 	if (currentUser){
-		
 
-// 	}
-
-
-// }
-
-
-function removeCards(card){
+function removeCards(card) {
 	var relation = currentUser.relation("cardsToUser");
 	//console.log(card);
 	getUserCards(function(list) {
-			console.log(list);
-			var cardId  = $(card).prop("id");
-			for (var i = 0;i<list.length;i++){
-				if (cardId === list[i].id){
-					relation.remove(list[i]);
-					currentUser.save();
-					alert("delete it");
-					break;
-				}
+		console.log(list);
+		var cardId  = $(card).prop("id");
+		for (var i = 0;i<list.length;i++){
+			if (cardId === list[i].id){
+				relation.remove(list[i]);
+				currentUser.save();
+				alert("delete it");
+				break;
 			}
+		}
 
-		});
-	
-	
-
+	});
 
 }
 
