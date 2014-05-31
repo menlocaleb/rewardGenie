@@ -27,19 +27,46 @@ $(document).ready(function() {
 
 	$("#nav-current-cards").click(function() {
 		getUserCards(function(list) {
+
 			var html = "";
+			var childNode  ='';
+			// for (var i = 0; i < list.length; i++) {
+			// 	html += "<h2>"+list[i].getCardName()+"</h2>";
+			// }
+			// $("#cardLists").html(html);
+			$("#cardLists").empty();
+
 			for (var i = 0; i < list.length; i++) {
-				html += "<h2>"+list[i].getCardName()+"</h2>";
+				html = '<span style  = "font:12oz;">'+list[i].getCardName()+"</span>";
+				//childNode = '<div '+ 'id = '+list[i].getId()+'><p>'+html+'</p>'
+				console.log(list[i]);
+				childNode = '<div '+ 'id = '+list[i].id+'>'+'<br>'+html
+				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
+				+'</div>';
+				$("#cardLists").append(childNode);
 			}
-			$("#cardLists").html(html);
+
+
+
+
 		});
 	});
 
 	$("#getCardDetailsButton").click(function() {
 		cardInfo.lookupCardNumber($("#cardNumberInput").val())
 		.done(function(data) {
-			if (data.bank.valueOf("")||data.card_type.valueOf(""))
-				$("#cardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			if (data.bank.valueOf("")||data.card_type.valueOf("")){
+
+
+				var innerHtml = "Bank: " + data.bank + "<br/> Card Brand: " + data.brand+"<br/> Card Type: " + data.card_type
+								+"<br/> Card Category: " + data.card_category+ "<br/> Country Name: "+data.country_name ;
+				//console.log(data);
+				$("#cardInfoOutput").html(innerHtml);
+
+
+
+
+			}
 			else {
 				$("#cardInfoOutput").html("The Bank infomation is not available.");
 			}
@@ -54,6 +81,7 @@ $(document).ready(function() {
 	google.maps.event.addDomListener(window, 'load', initialize);
 	$('.dropdown-toggle').dropdown();
 	$('#geolocationError').hide();
+	$("#rewards").hide();
 	
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
@@ -69,15 +97,16 @@ $(document).ready(function() {
 	$("#inputCreditCard").keyup(function(){
 		var inputCreditCard = $('#inputCreditCard');
 		if (inputCreditCard.val().length != 6) {
-			$("#usercardInfoOutput").html("Please Input An Six-digit Number.");
-			$("#usercardInfoOutput").prop("class","alert alert-danger");
 			$("#addCreditCardToUser").hide();
+			$("#cardInfoOutput").hide();
+			$("#rewards").hide();
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
 				(inputCreditCard.val() == prevString ) ){
 			console.log("happened!");
 			inputCreditCard.data('val',inputCreditCard.val());
 			addCreditCard(inputCreditCard.val());
+			$("#rewards").show();
 			prevString = inputCreditCard.val();
 			
 		}
@@ -127,6 +156,16 @@ $('#signInForm').submit(function(e){
 
 	return false;
 });
+
+
+
+function dofordrop(x){
+	var card = $(x).parent();
+	$(card).remove();
+	removeCards(card);
+}
+
+
 
 
 function showTabBar(){

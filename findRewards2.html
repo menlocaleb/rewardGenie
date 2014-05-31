@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified Bootstrap CSS -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+  <!-- Our own CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="js/mapSearch.js"></script>
+  <!-- Our javascript is at bottom of body -->
+
+  <title>Reward Genie</title>
+</head>
+<body>	
+<div class="container" style="height: 100%">
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name">
+
+    <div id="input-control" class="controls">
+        <span id="clear-pac-input">Clear</span>
+    </div>
+    <!--<div id="type-selector" class="controls">
+
+    <input id="pac-input" class="controls" type="text"
+        placeholder="Enter a location" style = "display:none;">
+    <div id="type-selector" class="controls" style = "display:none;">
+
+      <input type="radio" name="type" id="changetype-all" checked="checked">
+      <label for="changetype-all">All</label>
+    </div>-->
+	<h2 style="margin:15px; text-align:center; color: RGB(63, 134, 196);">Find Rewards</h2>
+    <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
+
+    <div id="recommendedCards">
+    	<div id="bestCard">
+    	</div> 
+    </div>
+	
+	<div style="margin: 15px;"><a href="index.html" class="btn btn-primary btn-lg" role="button">Return to home</a></div>
+<hr>
+
+      <footer style="margin:15px;">
+        <p>&copy; Team Yellow 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+	  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!-- Our team's javascript -->
+    <script src="js/cardInfo.js"></script>
+    <script src="js/main.js"></script>
+
+	
+	<!--<script type="text/javascript" src="js/findMerchants.js"></script>-->
+    <script src="js/parse-1.2.18.js"></script>
+    <script type="text/javascript" src = "js/db.js"></script>
+</body>
+</html>
+
+

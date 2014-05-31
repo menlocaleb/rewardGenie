@@ -47,6 +47,9 @@ var Card = Parse.Object.extend("Card", {
 	getOfferDescription: function() {
 		return this.get("offerDescription");
 	},
+	getId : function(){
+		return this.get("Id");
+	},
 	getBank: function() {
 		return this.get("issuerBank");
 	}
@@ -158,7 +161,11 @@ function handleLogin(user){
 function addCreditCard(number){
 	cardInfo.lookupCardNumber(number)
 		.done(function(data) {
-			$("#usercardInfoOutput").html("Bank: " + data.bank + "<br/> Card Type: " + data.card_type);
+			var innerHtml = "Bank: " + data.bank + "<br/> Card Brand: " + data.brand+"<br/> Card Type: " + data.card_type
+								+"<p/> Card Category: " + data.card_category+ "<p/> Country Name: "+data.country_name ;
+				
+
+			$("#usercardInfoOutput").html(innerHtml);
 			$("#usercardInfoOutput").prop("class","alert alert-success")
 			$("#addCreditCardToUser").show();
 
@@ -182,17 +189,44 @@ function saveCardToUser(){
 	for (var i = 0;i<cardlists.length;i++){
 		if (cardlists[i].getCardName() ===  selectedCard){
 			currentCard = cardlists[i];
-			console.log("relation added!")
+			
+			//alert.log("card added!");
 		}
 	}
+	$('#successAdd').modal('show');
+	//console.log($('#usercardInfoOutput').html());
+	$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
 
 	relation.add(currentCard);
 	currentUser.save();
+	console.log("relation added!");
 }
+
+$( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+
+$( "#dialog-message" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+
 
 
 function handleCurrentCard(data){
-	console.log(data);
+	//console.log(data);
 	getCardsByBankAndBrand(data.bank, data.brand, function(results) {
 		//console.log(results);
 	cardlists  = results;	
@@ -205,15 +239,37 @@ function handleCurrentCard(data){
 }
 
 
-function getCurrentCardsForUser(){
-	if (currentUser){
+// function getCurrentCardsForUser(){
+// 	if (currentUser){
 		
 
-	}
+// 	}
+
+
+// }
+
+
+function removeCards(card){
+	var relation = currentUser.relation("cardsToUser");
+	//console.log(card);
+	getUserCards(function(list) {
+			console.log(list);
+			var cardId  = $(card).prop("id");
+			for (var i = 0;i<list.length;i++){
+				if (cardId === list[i].id){
+					relation.remove(list[i]);
+					currentUser.save();
+					alert("delete it");
+					break;
+				}
+			}
+
+		});
+	
+	
 
 
 }
-
 
 
 

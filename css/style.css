@@ -1,4 +1,28 @@
 
+.cardNumber{
+
+  text-align: right;
+  display: inline-block;
+}
+
+#searchResults{
+  width:100%;
+}
+
+.row{
+
+  padding-bottom: 1em;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
 .container-fluid {
 	text-align: center;
 	margin:5%;

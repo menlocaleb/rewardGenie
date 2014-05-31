@@ -10,8 +10,7 @@ title: Reward Genie
                     <h1>Welcome to Reward Genie!</h1>
                     <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
                 <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
-                <!--<p><a href="#findRewards" data-toggle="tab" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>-->
-				<p><a href="findRewards.html" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
+                <p><a href="findRewards2.html" class="btn btn-primary btn-lg" role="button">Find Cashback Rewards</a></p>
                   </div>
                 </div>
 
@@ -39,14 +38,55 @@ title: Reward Genie
 
             <div class="tab-pane" id="addCreditCard" style = "margin:15px;">
               <h2 style = "text-align:center;">Add New Credit Card</h2>
-                <div>
-                <input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" style = "width :70%;">
-                
-              </div>
-              <h4 id="usercardInfoOutput" class = "" style="text-align: center; "></h4>
-              <select class="form-control" id = "selectCard"></select>
+                <table id = "searchResults" cellspacing = "10">
+                <tr class = "row"> 
+                  <td class = "col-md-2"><label class = "cardNumber">Card Number</label></td>
+                  <td class = "col-md-6"><input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" maxlength = "6"/></td> 
+                   <td class = "col-md-2"><span></span></td>  
+                 </tr>          
+              
+                <tr id = "rewards" class = "row"> 
+                 <td class = "col-md-2"><label>Rewards Type</label></td>                 
+                 <td class = "col-md-6"><select class="form-control" id = "selectCard"></select>
+                </tr>
+
+              </table>
+               <div class = ".col-md-6 .col-md-offset-3"> <h4 id="usercardInfoOutput" class = "" style="text-align: center; width :100%; "></h4></div>
               <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin: 5px auto; display: none;right:0px;" onclick = "saveCardToUser()">Add</button>
+
+              
+
+              <div class="modal fade" id = "successAdd">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">System Message</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Your card is successfully added!&hellip;</p>
+                      <div class = ".col-md-6 .col-md-offset-3"> <h4 id="usercardInfoOutputInModal" class = "" style="text-align: center; width :100%; "></h4></div>                    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                      
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
             </div>
+
+
+
             <div class="tab-pane" id="myCurrentCards" style = "margin:15px;">
               <h2>My Current Cards</h2>
               <div id = "cardLists">
@@ -54,21 +94,6 @@ title: Reward Genie
             </div>
             <div class="tab-pane" id="profile" style = "margin:15px;">3</div>
             <div class="tab-pane" id="settings" style = "margin:15px;">4</div>
-			<div class="tab-pane" id="findRewards" style = "margin:15px;">
-				<div class="container" style="height: 100%">
-					<input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name">
-
-					<div id="input-control" class="controls">
-						<span id="clear-pac-input">Clear</span>
-					</div>
-				
-					<div id="map-canvas2" style="height: 45%"></div>
-
-					<div id="recommendedCards">
-						<div id="bestCard">
-						</div> 
-					</div>
-				</div> <!-- /container -->
 			</div>
   
 <!-- Main jumbotron for a primary marketing message or call to action -->
