@@ -54,6 +54,7 @@ $(document).ready(function() {
 	google.maps.event.addDomListener(window, 'load', initialize);
 	$('.dropdown-toggle').dropdown();
 	$('#geolocationError').hide();
+	
 	//$('#login').css('display',"none!important");
 	if (!currentUser){
 		$('#login').hide();
