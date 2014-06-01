@@ -39,7 +39,7 @@ $(document).ready(function() {
 				
 				//console.log(list[i]);
 				childNode = '<div '+ 'id = '+list[i].id+' class="col-md-6 col-md-offset-3 card-list-div">'+'<br>'+ html
-				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
+				+'<button style = "float:right;" onclick= dofordrop(this) ><span style="color:red;">X</span></button>'
 				+'</div>';
 				$("#cardLists").append(childNode);
 			}

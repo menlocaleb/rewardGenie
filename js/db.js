@@ -270,8 +270,8 @@ function removeCards(card) {
 		for (var i = 0;i<list.length;i++){
 			if (cardId === list[i].id){
 				relation.remove(list[i]);
+				$('#successRemove').modal('show');
 				currentUser.save();
-				alert("delete it");
 				break;
 			}
 		}
