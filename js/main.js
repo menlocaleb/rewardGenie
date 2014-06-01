@@ -30,17 +30,14 @@ $(document).ready(function() {
 
 			var html = "";
 			var childNode  ='';
-			// for (var i = 0; i < list.length; i++) {
-			// 	html += "<h2>"+list[i].getCardName()+"</h2>";
-			// }
-			// $("#cardLists").html(html);
+			
 			$("#cardLists").empty();
 
 			for (var i = 0; i < list.length; i++) {
 				html = '<h3>'+list[i].getBank() + ' ' + list[i].getCardName()+"</h3>";
 				html += '<p>' + list[i].getOfferDescription() + '</p>';
-				//childNode = '<div '+ 'id = '+list[i].getId()+'><p>'+html+'</p>'
-				console.log(list[i]);
+				
+				//console.log(list[i]);
 				childNode = '<div '+ 'id = '+list[i].id+' class="col-md-6 col-md-offset-3 card-list-div">'+'<br>'+ html
 				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
 				+'</div>';
