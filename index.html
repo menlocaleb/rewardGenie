@@ -33,29 +33,32 @@ title: Reward Genie
               </div>
             </div>
   </div>
-  <div class="container" style="height: 100%;display:none" id="map">
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
-         <div id="input-control" class="controls">
-            <span id="clear-pac-input">Clear</span>
-          </div>
-         <!--<div id="type-selector" class="controls">
+  <div class="tab-content" id="tab" style="display:none">
+      <div class="tab-pane" id="home">
+		  <div class="container" style="height: 100%;display:none" id="map">
+				<input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
+				 <div id="input-control" class="controls">
+					<span id="clear-pac-input">Clear</span>
+				  </div>
+				 <!--<div id="type-selector" class="controls">
 
-         <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location" style = "display:none;">
-        <div id="type-selector" class="controls" style = "display:none;">
-         <input type="radio" name="type" id="changetype-all" checked="checked">
-          <label for="changetype-all">All</label>
-         </div>-->
-          <h2 style="margin:15px; text-align:center; color: RGB(63, 134, 196);">Find Rewards</h2>
-          <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
-          <div id="recommendedCards">
-          <div id="bestCard">
-          </div> 
-          </div>
-  <!--div style="margin: 15px;"><a href="index.html" class="btn btn-primary btn-lg" role="button">Return to home</a></div-->
-     <hr>
-  </div> <!-- /container -->
-
+				 <input id="pac-input" class="controls" type="text"
+				placeholder="Enter a location" style = "display:none;">
+				<div id="type-selector" class="controls" style = "display:none;">
+				 <input type="radio" name="type" id="changetype-all" checked="checked">
+				  <label for="changetype-all">All</label>
+				 </div>-->
+				  <h2 style="margin:15px; text-align:center; color: RGB(63, 134, 196);">Find Rewards</h2>
+				  <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
+				  <div id="recommendedCards">
+				  <div id="bestCard">
+				  </div> 
+				  </div>
+		  <!--div style="margin: 15px;"><a href="index.html" class="btn btn-primary btn-lg" role="button">Return to home</a></div-->
+			 <hr>
+		  </div> <!-- /container -->
+	</div>
+	</div>
     <div class="tab-content" id="tab" style="display:none">
       <div class="tab-pane" id="addCreditCard" style = "margin:15px;">
         <h2 style = "text-align:center;">Add New Credit Card</h2>
@@ -112,8 +115,9 @@ title: Reward Genie
       </div>
       <div class = "container " id="tabControl">      
           <ul class="nav nav-tabs btn-group btn-group-justified" id = "myTab">
-                  <li class = "mytab"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>
-                  <li class = "mytab"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
+				<li class = "mytab"><a href="#home" data-toggle="tab">Current Cards</a></li>
+                <li class = "mytab"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>
+                <li class = "mytab"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
                   
           </ul>
       </div>
