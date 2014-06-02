@@ -44,6 +44,10 @@ $(document).ready(function() {
 				$("#cardLists").append(childNode);
 			}
 
+			if (list.length < 1) {
+				$("#cardLists").append("<div class='col-md-6 col-md-offset-3'><h4> Please add a credit card!</h4></div>");
+			}
+
 
 
 
