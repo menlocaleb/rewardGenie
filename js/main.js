@@ -133,7 +133,7 @@ $(document).ready(function() {
 
 $("#logOutButton").click(function(){
 		handleLogin(currentUser);
-		document.location.href = "index.html"
+		document.location.href = "index.html";
 });
 
 
@@ -159,7 +159,7 @@ $('#signInForm').submit(function(e){
 	var fields = $(this).serializeArray();
 
 	userLogin(fields);
-
+	//document.location.href = "index.html";
 	return false;
 });
 

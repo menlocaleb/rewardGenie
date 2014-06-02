@@ -138,8 +138,12 @@ function handleLogin(user){
 			$('#tab').show();
 			$("#tabControl").show();
 			$("#logOutButton").show();
-			$("#mapview").show();
 			google.maps.event.addDomListener(window, 'load', initialize);
+
+
+				
+			$("#mapview").show();
+			
 			// $('#find-rewards-button').hide();
 			// $('#title').hide();
 			// $('#content').hide();
@@ -157,6 +161,7 @@ function handleLogin(user){
 			$("#signInForm")[0].reset();
 			$('#find-rewards-button').hide();
 			$("#mapview").hide();
+			google.maps.event.addDomListener(window, 'load', initialize);
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
