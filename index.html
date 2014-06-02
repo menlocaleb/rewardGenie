@@ -40,13 +40,13 @@ title: Reward Genie
         <h2 style = "text-align:center;">Add New Credit Card</h2>
           <table id = "searchResults" cellspacing = "10">
           <tr class = "row"> 
-            <td class = "col-md-2"><label class = "cardNumber">Card Number</label></td>
+            <td class = "col-md-2"><label class = "cardNumber">Card Number: </label></td>
             <td class = "col-md-6"><input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" maxlength = "6"/></td> 
              <td class = "col-md-2"><span></span></td>  
            </tr>          
         
           <tr id = "rewards" class = "row"> 
-           <td class = "col-md-2"><label>Rewards Type</label></td>                 
+           <td class = "col-md-2"><label>Rewards Type: </label></td>                 
            <td class = "col-md-6"><select class="form-control" id = "selectCard"></select>
           </tr>
 
@@ -65,10 +65,10 @@ title: Reward Genie
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">System Message</h4>
+                <h4 class="modal-title"><span style="color:green">Card Added</span></h4>
               </div>
               <div class="modal-body">
-                <p>Your card is successfully added!&hellip;</p>
+                Your card has been added successfully!
                 <div class = "col-md-6 col-md-offset-3"> <h4 id="usercardInfoOutputInModal" class = "" style="text-align: center; width :100%; "></h4></div>                    
               </div>
               <div class="modal-footer">
@@ -84,6 +84,7 @@ title: Reward Genie
 
 
       <div class="tab-pane" id="myCurrentCards" style = "margin:15px;">
+
         <div class="row">
           <h2 class="col-md-6 col-md-offset-3">My Current Cards</h2>
         </div>
@@ -101,7 +102,28 @@ title: Reward Genie
           
         
       </div>
-		</div>
+
+      
+	  
+	   <div class="modal fade" id = "successRemove">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><span style="color:red">Card Removed</span></h4>
+              </div>
+              <div class="modal-body">
+                Your card has been removed successfully.                 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+		
+	</div>
   
 <!-- Main jumbotron for a primary marketing message or call to action -->
     

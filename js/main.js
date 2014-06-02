@@ -39,9 +39,13 @@ $(document).ready(function() {
 				
 				//console.log(list[i]);
 				childNode = '<div '+ 'id = '+list[i].id+' class="col-md-6 col-md-offset-3 card-list-div">'+'<br>'+ html
-				+'<button style = "float:right;" onclick= dofordrop(this) >X</button>'
+				+'<button style = "float:right;" onclick= dofordrop(this) ><span style="color:red;">X</span></button>'
 				+'</div>';
 				$("#cardLists").append(childNode);
+			}
+
+			if (list.length < 1) {
+				$("#cardLists").append("<div class='col-md-6 col-md-offset-3'><h4> Please add a credit card!</h4></div>");
 			}
 
 
@@ -105,7 +109,7 @@ $(document).ready(function() {
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
 				(inputCreditCard.val() == prevString ) ){
-			console.log("happened!");
+			//console.log("happened!");
 			inputCreditCard.data('val',inputCreditCard.val());
 			addCreditCard(inputCreditCard.val());
 			$("#rewards").show();
