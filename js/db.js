@@ -196,6 +196,7 @@ function addCreditCard(number){
 
 function saveCardToUser(){
 
+	currentCard = null; // set to null so can detect if change value in for loop below
 	var relation = currentUser.relation("cardsToUser");
 	var selectedCard = $("#selectCard").find(":selected").text();
 	//console.log(cardlists);
@@ -207,18 +208,19 @@ function saveCardToUser(){
 			//alert.log("card added!");
 		}
 	}
-
-	relation.add(currentCard);
-	currentUser.save(null, {
-		success: function() {
-			$('#successAdd').modal('show');
-			//console.log($('#usercardInfoOutput').html());
-			$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
-		},
-		error: function() {
-			console.log("error saving card to user.");
-		} 
-	});
+	if (currentCard) {
+		relation.add(currentCard);
+		currentUser.save(null, {
+			success: function() {
+				$('#successAdd').modal('show');
+				//console.log($('#usercardInfoOutput').html());
+				$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
+			},
+			error: function() {
+				console.log("error saving card to user.");
+			} 
+		});
+	}
 }
 
 $( "#dialog-message" ).dialog({
@@ -338,6 +340,7 @@ function getUserCards(callback) {
 function getApplicableCards(placeTypes, placeName, callback) {
 	var offers = new Parse.Query(Offer);
 	var specialOffers = new Parse.Query(Offer);
+	var usersCards = currentUser.relation("cardsToUser");  // this is to filter results based on user's cards
 
 	// check if any of the placeTypes are listed in the array for which an offer is valid
 	// only one of the placeTypes has to match with any of the places listed in places for an offer
@@ -353,6 +356,7 @@ function getApplicableCards(placeTypes, placeName, callback) {
 	var mainQuery = Parse.Query.or(specialOffers, offers);
 	mainQuery.include("card");				// pull card data with offer data (so we know which one to recommend)
 	mainQuery.descending("offerPercent");	// top result should be best offer percent
+	mainQuery.matchesQuery("card", usersCards.query());
 
 	mainQuery.find({
 	  success: function(results) {

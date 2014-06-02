@@ -105,7 +105,7 @@ $(document).ready(function() {
 		}
 		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
 				(inputCreditCard.val() == prevString ) ){
-			console.log("happened!");
+			//console.log("happened!");
 			inputCreditCard.data('val',inputCreditCard.val());
 			addCreditCard(inputCreditCard.val());
 			$("#rewards").show();
