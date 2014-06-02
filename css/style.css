@@ -11,6 +11,8 @@ a, h4, h5, h6 {
 	color: #188F89;
 }
 
+
+
 .cardNumber{
 
   text-align: right;
@@ -40,6 +42,24 @@ a, h4, h5, h6 {
   padding-bottom: 1em;
   margin-bottom: 10px;
 }
+
+#Signin {
+
+  width: 100%;
+  margin-left:  0%;
+  margin-right: 10%;
+  background-color: #203D6C; 
+  color:#FFFFFF;
+}
+
+#find-rewards-button{
+  width: 100%;
+  margin-right: 10%;
+  background-color: #203D6C; 
+  color:#FFFFFF;
+}
+
+
 
 
 

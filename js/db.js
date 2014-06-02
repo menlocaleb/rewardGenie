@@ -129,17 +129,18 @@ function handleLogin(user){
 
 		if (!userLoginStatus){
 			userLoginStatus = true;
-			var button  = $("#dropdownButton");
+			var currentUserName  = $("#currentUserName");
 			var name = user.getUsername();
-			button.text(name);
+			currentUserName.text(name);
 			loginElement.show();	
 			$('#map').show();		
-			$('#signInForm').hide();
+			$('#signInDiv').hide();
 			$('#tab').show();
 			$("#tabControl").show();
-			$('#find-rewards-button').hide();
-			$('#title').hide();
-			$('#content').hide();
+			$("#logOutButton").show();
+			// $('#find-rewards-button').hide();
+			// $('#title').hide();
+			// $('#content').hide();
 			showTabBar();
 		//	var url = document.location.href;
 		//	if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
@@ -156,6 +157,7 @@ function handleLogin(user){
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
+			$("#logOutButton").hide();
 			$("#tabControl").hide();
 			//window.reload();
 			document.location.href = "/index.html";

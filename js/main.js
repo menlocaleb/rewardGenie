@@ -66,9 +66,6 @@ $(document).ready(function() {
 				//console.log(data);
 				$("#cardInfoOutput").html(innerHtml);
 
-
-
-
 			}
 			else {
 				$("#cardInfoOutput").html("The Bank infomation is not available.");
@@ -192,24 +189,7 @@ function showTabBar(){
 
 
 $('#Signup').click(function() {
-	// Getting the variable's value from a link 
-	// var loginBox = $(this).attr('href');
-
-	// //Fade in the Popup and add close button
-	// $(loginBox).fadeIn(300);
 	
-	// //Set the center alignment padding + border
-	// var popMargTop = ($(loginBox).height() + 24) / 2; 
-	// var popMargLeft = ($(loginBox).width() + 24) / 2; 
-	
-	// $(loginBox).css({ 
-	// 	'margin-top' : -popMargTop,
-	// 	'margin-left' : -popMargLeft
-	// });
-	
-	// // Add the mask to body
-	// $('body').append('<div id="mask"></div>');
-	// $('#mask').fadeIn(300);
 	$('#myModal').modal('show');
 	
 	return false;

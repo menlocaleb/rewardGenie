@@ -7,8 +7,26 @@ title: Reward Genie
           <div class="jumbotron" id="title">
             <div class="container">
               <h1 style="color:#203D6C">Welcome to Reward Genie!</h1>
+              <p id = "currentUserName"></p>
               <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
           <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
+              <div id = "signInDiv">
+                <form class="" role="form" id = "signInForm" >
+                  <div class="form-group" >
+                    <input type="text" placeholder="Username" class="form-control" name = "username">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" name = "password">
+                  </div>
+                  <button type="submit" class="btn btn-lg" id = "Signin" >Log in</button>                 
+                  <p></p>                   
+                </form>
+                <div style = "text-align:center; ">
+                <span>Don't have an account?</span><a class = "" id = "Signup" href = "#signUpPop">Sign up</a>
+                  
+                  <p></p>
+                </div>
+              </div>
           <p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>
             </div>
     </div>
