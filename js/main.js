@@ -18,6 +18,7 @@ Discover
 
 // Start of execution
 var prevString = "";
+$("#addCreditCardToUser").hide();
 $(document).ready(function() {
 
 	if (currentUser) {

@@ -40,13 +40,13 @@ title: Reward Genie
         <h2 style = "text-align:center;">Add New Credit Card</h2>
           <table id = "searchResults" cellspacing = "10">
           <tr class = "row"> 
-            <td class = "col-md-2"><label class = "cardNumber">Card Number: </label></td>
+            <td class = "col-xs-4" style="font-size: 12px"><label class = "cardNumber">Card Number: </label></td>
             <td class = "col-md-6"><input type="text" class="form-control" placeholder="Input First 6 digits number" id = "inputCreditCard" maxlength = "6"/></td> 
              <td class = "col-md-2"><span></span></td>  
            </tr>          
         
           <tr id = "rewards" class = "row"> 
-           <td class = "col-md-2"><label>Rewards Type: </label></td>                 
+           <td class = "col-xs-4" style="font-size: 12px"><label>Rewards Type: </label></td>                 
            <td class = "col-md-6"><select class="form-control" id = "selectCard"></select>
           </tr>
 
@@ -54,7 +54,7 @@ title: Reward Genie
         <div class="row">
           <div class = "col-md-5 col-md-offset-3"> <h4 id="usercardInfoOutput" class = "" style="text-align: center; width :100%; "></h4></div>
           <div class="col-md-1">
-            <button id="addCreditCardToUser" type="button" class="btn btn-primary" style="margin-top:20px" onclick = "saveCardToUser()">Add</button>
+            <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block btn-primary" style="margin-top:20px" onclick = "saveCardToUser()">Add this card to account</button>
           </div>
         </div>
 
