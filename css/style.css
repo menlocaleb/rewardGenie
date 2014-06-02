@@ -16,6 +16,10 @@ a, h4, h5, h6 {
 	color: #188F89;
 }
 
+.tab-pane.active {
+  margin-bottom: 60px;
+}
+
 #logOutButton {
 	color: #FFFFFF;
 	background-color: #188F89;
@@ -36,6 +40,11 @@ a, h4, h5, h6 {
 	width: 100%;
 	border: none;
 }
+
+#nav-tab-padding {
+  height: 200px;
+}
+
 .jumbotron{
 	background-color: #B1D0B5;
 	color: #FFFFFF;
@@ -78,6 +87,14 @@ a, h4, h5, h6 {
   background-color: #B1D0B5;
   color: #188F89;
   
+}
+
+.delete-card-button {
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  background-color: #188F89; 
+  border: none;
 }
 
 #bestCard {

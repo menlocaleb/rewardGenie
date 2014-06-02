@@ -6,6 +6,7 @@ var userLoginStatus = false;
 var currentCard;
 var currentCardsList;
 var cardlists;
+var usersCards; // check this when adding to see if already have it - keep up to date on delete and add
 
 var User = Parse.Object.extend("User", {
 	//to prevent front end typo. Wrap up all gets and sets
@@ -271,15 +272,9 @@ function saveCardToUser(){
 								console.log("error saving card to user.");
 							} 
 						});
-					}
+				}
 		});
-		
-
-		
-		
-
-		
-	}
+	}		
 }
 
 $( "#dialog-message" ).dialog({
@@ -332,8 +327,14 @@ function removeCards(card) {
 		for (var i = 0;i<list.length;i++){
 			if (cardId === list[i].id){
 				relation.remove(list[i]);
-				$('#successRemove').modal('show');
-				currentUser.save();
+				currentUser.save(null, {
+					success: function() {
+						$('#successRemove').modal('show');
+						getUserCards(function(data) {
+							usersCards = data;
+						});
+					}
+				});
 				break;
 			}
 		}
@@ -378,6 +379,7 @@ function getUserCards(callback) {
 		relation.query().find({
 			success: function(list) {
 				if (callback && typeof(callback) == "function") {
+					usersCards = list;
 					callback(list);
 				}
 			},
