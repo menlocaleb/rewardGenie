@@ -4,6 +4,7 @@ Parse.initialize("8IE4lU1jvQt72tVNPLfLg6YKsDMD5rR8pIUYUkg7", "rqKaLUoGAUZMWojI0I
 var currentUser = Parse.User.current();
 var userLoginStatus = false;
 var currentCard;
+var currentCardsList;
 var cardlists;
 
 var User = Parse.Object.extend("User", {
@@ -234,37 +235,50 @@ function saveCardToUser(){
 		}
 	}
 	if (currentCard) {
+		var relation = currentUser.relation("cardsToUser");
+		//console.log(card);
+		
 
-		var found = false;
-		for(var i = 0; i < cardlists.length; i++) {
-		    if (cardlists[i].getCardName() == currentCard.getCardName()) {
-		        found = true;
-		        break;
-		    }
-		}
-
-		if (found){
-				$('#sameCardError').modal('show');
-
-		}
-		else {
-				relation.add(currentCard);
-				currentUser.save(null, {
-					success: function() {
-						$('#successAdd').modal('show');
-						//console.log($('#usercardInfoOutput').html());
-						$("#usercardInfoOutput").hide();			
-						$('#inputCreditCard').val("");
-						$("#addCreditCardToUser").hide();
-						$("#rewards").hide();
-						$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
-
-					},
-					error: function() {
-						console.log("error saving card to user.");
-					} 
-				});
+		getUserCards(function(list) {
+			console.log(list);
+			//cardlists = list;
+			var found = false;
+			for (var i = 0;i<list.length;i++){
+				if (currentCard.getCardName() === list[i].getCardName()){
+					found = true;
+					
+					break;
+				}
 			}
+			if (found){
+				$('#sameCardError').modal('show');	
+
+				}
+				else {
+						relation.add(currentCard);
+						currentUser.save(null, {
+							success: function() {
+								$('#successAdd').modal('show');
+								//console.log($('#usercardInfoOutput').html());
+								$("#usercardInfoOutput").hide();			
+								$('#inputCreditCard').val("");
+								$("#addCreditCardToUser").hide();
+								$("#rewards").hide();
+								$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
+
+							},
+							error: function() {
+								console.log("error saving card to user.");
+							} 
+						});
+					}
+		});
+		
+
+		
+		
+
+		
 	}
 }
 
@@ -313,6 +327,7 @@ function removeCards(card) {
 	//console.log(card);
 	getUserCards(function(list) {
 		console.log(list);
+		//cardlists = list;
 		var cardId  = $(card).prop("id");
 		for (var i = 0;i<list.length;i++){
 			if (cardId === list[i].id){
