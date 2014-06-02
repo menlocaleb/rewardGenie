@@ -30,7 +30,7 @@ title: Reward Genie
       <!--<p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>-->
             </div>
           </div>
-           <div id = "mapview" >
+           <div id = "mapview" style = "height:400px;">
               <h2 class="col-md-6 col-md-offset-3">Find Rewards</h2>
                 <div class="container" style="height: 30px;width :100%; margin-top:-20px" id="map">
                   <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
@@ -39,7 +39,7 @@ title: Reward Genie
                     </div>
                 </div>   
                     
-                <div id="map-canvas2" style="height: 200px; width :100%;"></div>
+                <div id="map-canvas2" style="height: 95%; width :100%;"></div>
                 <div id="recommendedCards">
                     <div id="bestCard"></div> 
                 </div>
@@ -74,7 +74,7 @@ title: Reward Genie
           <tr class = "row" style="margin-top:10px;"> 
             <td class = "col-xs-5" style="font-size: 13px; color:#203D6C;"><label class = "cardNumber">Card Number:* </label></td>
             <td class = "col-md-5"><input type="text" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
-             <td class = "col-md-2"><span></span></td>  
+             
            </tr>          
           <tr class="row">
             <td colspan="2"><h4 id="usercardInfoOutput" class = "" style="text-align: center; width :100%; "></h4></td>
@@ -164,6 +164,25 @@ title: Reward Genie
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+
+      <div class="modal fade" id = "sameCardError">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><span style="color:red">Error </span></h4>
+              </div>
+              <div class="modal-body">
+                This card has already been added before. 
+                <p>Please try to input a new card!</p>               
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>               
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
 		
 	</div>
   
