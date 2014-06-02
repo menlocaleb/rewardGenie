@@ -80,6 +80,14 @@ a, h4, h5, h6 {
   
 }
 
+.delete-card-button {
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  background-color: #188F89; 
+  border: none;
+}
+
 #bestCard {
 	border-bottom: 1px #CCCCCC solid;
 	margin: 10px;
