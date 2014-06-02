@@ -139,6 +139,7 @@ function handleLogin(user){
 			$("#tabControl").show();
 			$("#logOutButton").show();
 			$("#mapview").show();
+			google.maps.event.addDomListener(window, 'load', initialize);
 			// $('#find-rewards-button').hide();
 			// $('#title').hide();
 			// $('#content').hide();
