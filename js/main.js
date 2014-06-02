@@ -22,7 +22,9 @@ $("#addCreditCardToUser").hide();
 $(document).ready(function() {
 
 	if (currentUser) {
-		getUserCards();
+		getUserCards(function(data) {
+			usersCards = data;
+		});
 	}
 
 
