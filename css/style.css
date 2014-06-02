@@ -1,8 +1,34 @@
+body {
+	background-color: #E0E0E0;
+	font-family: Oswald, Times New Roman;
+}
+
+h2, h1, h3 {
+	color: #203D6C;
+}
+
+a, h4, h5, h6 {
+	color: #188F89;
+}
 
 .cardNumber{
 
   text-align: right;
   display: inline-block;
+}
+
+#find-rewards-button {
+	background-color: #203D6C;
+}
+
+#headerContainer {
+	background-color: #203D6C;
+	width: 100%;
+	border: none;
+}
+.jumbotron{
+	background-color: #B1D0B5;
+	color: #FFFFFF;
 }
 
 #searchResults{
@@ -19,7 +45,11 @@
 
 .card-list-div {
   border-bottom: 1px #CCCCCC solid;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  margin: 0px 12px 15px 15px;
+  background-color: #B1D0B5;
+  color: #FFFFFF;
+  
 }
 
 

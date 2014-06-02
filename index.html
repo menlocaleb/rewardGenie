@@ -7,10 +7,10 @@ title: Reward Genie
       <div class="tab-pane active" id="home">
           <div class="jumbotron">
             <div class="container">
-              <h1>Welcome to Reward Genie!</h1>
+              <h1 style="color:#203D6C">Welcome to Reward Genie!</h1>
               <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
           <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
-          <p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-primary btn-lg" role="button" style="display:none;">Find Cashback Rewards</a></p>
+          <p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ title: Reward Genie
         <h2 style = "text-align:center;">Add New Credit Card</h2>
           <table id = "searchResults" cellspacing = "10">
           <tr class = "row"> 
-            <td class = "col-xs-4" style="font-size: 12px"><label class = "cardNumber">Card Number: </label></td>
+            <td class = "col-xs-4" style="font-size: 12px"><label class = "cardNumber">Card Number:* </label></td>
             <td class = "col-md-6"><input type="text" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
              <td class = "col-md-2"><span></span></td>  
            </tr>          
@@ -56,6 +56,7 @@ title: Reward Genie
           <div class="col-md-1">
             <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block btn-primary" style="margin-top:20px" onclick = "saveCardToUser()">Add this card to account</button>
           </div>
+		  <p style="margin: 10px; color: #188F89; font-size: 11pt">*Please note that we do not store your credit card number in our system.</p>
         </div>
 
         

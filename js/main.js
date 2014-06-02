@@ -35,12 +35,12 @@ $(document).ready(function() {
 			$("#cardLists").empty();
 
 			for (var i = 0; i < list.length; i++) {
-				html = '<h3>'+list[i].getBank() + ' ' + list[i].getCardName()+"</h3>";
-				html += '<p>' + list[i].getOfferDescription() + '</p>';
+				html = '<h3 style="color: #203D6C;">'+list[i].getBank() + '<br/>' + list[i].getCardName()+"</h3>";
+				html += '<p style="font-size: 14pt;">' + list[i].getOfferDescription() + '</p>';
 				
 				//console.log(list[i]);
 				childNode = '<div '+ 'id = '+list[i].id+' class="col-md-6 col-md-offset-3 card-list-div">'+'<br>'+ html
-				+'<button style = "float:right;" onclick= dofordrop(this) ><span style="color:red;">X</span></button>'
+				+'<button style = "float:right; background-color: #188F89; border: none;" onclick= dofordrop(this) ><span style="color:#FFFFFF;">X</span></button>'
 				+'</div>';
 				$("#cardLists").append(childNode);
 			}
