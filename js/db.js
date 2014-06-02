@@ -133,11 +133,12 @@ function handleLogin(user){
 			var name = user.getUsername();
 			currentUserName.text(name);
 			loginElement.show();	
-			$('#map').show();		
+				
 			$('#signInDiv').hide();
 			$('#tab').show();
 			$("#tabControl").show();
 			$("#logOutButton").show();
+			$("#mapview").show();
 			// $('#find-rewards-button').hide();
 			// $('#title').hide();
 			// $('#content').hide();
@@ -154,6 +155,7 @@ function handleLogin(user){
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
 			$('#find-rewards-button').hide();
+			$("#mapview").hide();
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
@@ -192,6 +194,8 @@ function addCreditCard(number){
 			handleCurrentCard(data);
 			currentCard = data;
 
+
+
 		})
 		.fail(function() {
 			$("#usercardInfoOutput").html("Getting card data failed.");
@@ -220,7 +224,13 @@ function saveCardToUser(){
 			success: function() {
 				$('#successAdd').modal('show');
 				//console.log($('#usercardInfoOutput').html());
+				$("#usercardInfoOutput").hide();
+				
+				$('#inputCreditCard').val("");
+				$("#addCreditCardToUser").hide();
+				$("#rewards").hide();
 				$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
+
 			},
 			error: function() {
 				console.log("error saving card to user.");

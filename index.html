@@ -27,10 +27,24 @@ title: Reward Genie
                   <p></p>
                 </div>
               </div>
-          <!--<p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>-->
+      <!--<p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>-->
             </div>
-    </div>
-
+          </div>
+           <div id = "mapview" >
+              <h2 class="col-md-6 col-md-offset-3">Find Rewards</h2>
+                <div class="container" style="height: 30px;width :100%;" id="map">
+                  <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
+                   <div id="input-control" class="controls">
+                      <span id="clear-pac-input">Clear</span>
+                    </div>
+                </div>   
+                    
+                <div id="map-canvas2" style="height: 200px; width :100%;"></div>
+                <div id="recommendedCards">
+                    <div id="bestCard"></div> 
+                </div>
+              </div>
+              
     <div class="container" id="content">
             <!-- Example row of columns -->
             <div class="row">
@@ -50,9 +64,10 @@ title: Reward Genie
                 
               </div>
             </div>
+    </div>
   </div>
           
-    <div class="tab-content" id="tab" style="display:none">
+   
       <div class="tab-pane" id="addCreditCard" style = "margin:15px;">
       	<h2 class="col-md-6 col-md-offset-3">Add New Credit Card</h2>
           <table id = "searchResults" cellspacing = "10" style="margin-top:30px;">
@@ -108,7 +123,7 @@ title: Reward Genie
       </div>
       
       
-      <div class="tab-pane active" id="homeTab" style = "margin:15px;">
+      <!-- <div class="tab-pane active" id="homeTab" style = "margin:15px;">
 
 		<h2 class="col-md-6 col-md-offset-3">Find Rewards</h2>
           <div class="container" style="height: 100%;display:none" id="map">
@@ -116,14 +131,14 @@ title: Reward Genie
              <div id="input-control" class="controls">
                 <span id="clear-pac-input">Clear</span>
               </div>
-          </div> <!-- /container -->  
+          </div>   
               
           <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
           <div id="recommendedCards">
               <div id="bestCard"></div> 
           </div>
 		  
-      </div>
+      </div> -->
       
       <div class = "container " id="tabControl">      
           <ul class="nav nav-tabs btn-group btn-group-justified" id = "myTab" style="text-align:center;">

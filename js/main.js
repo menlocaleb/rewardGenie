@@ -90,6 +90,7 @@ $(document).ready(function() {
 		$('#login').hide();
 		$("#tabControl").hide();
 		$("#signInForm").show();
+		$("#mapview").hide();
 	}
 	else {
 		handleLogin(currentUser);
