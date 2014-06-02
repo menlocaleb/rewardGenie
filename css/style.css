@@ -3,7 +3,12 @@ body {
 	font-family: Oswald, Times New Roman;
 }
 
-h2, h1, h3 {
+h2 {
+	color: #203D6C;
+	margin:5px;
+}
+
+h1, h3 {
 	color: #203D6C;
 }
 

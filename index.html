@@ -51,54 +51,29 @@ title: Reward Genie
               </div>
             </div>
   </div>
-  <div class="tab-content" id="tab" style="display:none">
-      <div class="tab-pane" id="home">
-		  <div class="container" style="height: 100%;display:none" id="map">
-				<input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
-				 <div id="input-control" class="controls">
-					<span id="clear-pac-input">Clear</span>
-				  </div>
-				 <!--<div id="type-selector" class="controls">
-
-				 <input id="pac-input" class="controls" type="text"
-				placeholder="Enter a location" style = "display:none;">
-				<div id="type-selector" class="controls" style = "display:none;">
-				 <input type="radio" name="type" id="changetype-all" checked="checked">
-				  <label for="changetype-all">All</label>
-				 </div>-->
-				  <h2 style="margin:15px; text-align:center; color: RGB(63, 134, 196);">Find Rewards</h2>
-				  <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
-				  <div id="recommendedCards">
-				  <div id="bestCard">
-				  </div> 
-				  </div>
-		  <!--div style="margin: 15px;"><a href="index.html" class="btn btn-primary btn-lg" role="button">Return to home</a></div-->
-			 <hr>
-		  </div> <!-- /container -->
-	</div>
-	</div>
+          
     <div class="tab-content" id="tab" style="display:none">
       <div class="tab-pane" id="addCreditCard" style = "margin:15px;">
-        <h2 style = "text-align:center;">Add New Credit Card</h2>
-          <table id = "searchResults" cellspacing = "10">
-          <tr class = "row"> 
-            <td class = "col-xs-4" style="font-size: 12px"><label class = "cardNumber">Card Number:* </label></td>
-            <td class = "col-md-6"><input type="text" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
+      	<h2 class="col-md-6 col-md-offset-3">Add New Credit Card</h2>
+          <table id = "searchResults" cellspacing = "10" style="margin-top:30px;">
+          <tr class = "row" style="margin-top:10px;"> 
+            <td class = "col-xs-5" style="font-size: 13px; color:#203D6C;"><label class = "cardNumber">Card Number:* </label></td>
+            <td class = "col-md-5"><input type="text" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
              <td class = "col-md-2"><span></span></td>  
            </tr>          
         
-          <tr id = "rewards" class = "row"> 
-           <td class = "col-xs-4" style="font-size: 12px"><label>Rewards Type: </label></td>                 
-           <td class = "col-md-6"><select class="form-control" id = "selectCard"></select>
+          <tr id = "rewards" class = "row" style="margin-top:10px;"> 
+           <td class = "col-xs-5" style="font-size: 13px; color:#203D6C;"><label>Rewards Type: </label></td>                 
+           <td class = "col-md-5"><select class="form-control" id = "selectCard"></select>
           </tr>
 
         </table>
-        <div class="row">
+        <div class="row" style="margin-top:10px;">
           <div class = "col-md-5 col-md-offset-3"> <h4 id="usercardInfoOutput" class = "" style="text-align: center; width :100%; "></h4></div>
           <div class="col-md-1">
-            <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block btn-primary" style="margin-top:20px" onclick = "saveCardToUser()">Add this card to account</button>
+            <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block" style="margin-top:20px; color:#FFFFFF; background-color:#203D6C;" onclick = "saveCardToUser()">Add this card to account</button>
           </div>
-		  <p style="margin: 15px; color: #188F89; font-size: 11pt">*Please note that we do not store your credit card number in our system.</p>
+		  <p style="margin: 15px; color: #188F89; font-size: 11pt; text-align:center;">*Please note that we do not store your credit card number in our system.</p>
         </div>
 
         
@@ -123,19 +98,38 @@ title: Reward Genie
         </div><!-- /.modal -->
 
       </div>
-      <div class="tab-pane active" id="myCurrentCards" style = "margin:15px;">
+      
+      
+      <div class="tab-pane" id="myCurrentCards" style = "margin:25px;">
 
-        <div class="row">
-          <h2 class="col-md-6 col-md-offset-3">My Current Cards</h2>
-        </div>
+        <h2 class="col-md-6 col-md-offset-3" style="margin-bottom:10px;">My Current Cards</h2>
         <div id = "cardLists" class="row">
         </div>
       </div>
+      
+      
+      <div class="tab-pane active" id="homeTab" style = "margin:15px;">
+
+		<h2 class="col-md-6 col-md-offset-3">Find Rewards</h2>
+          <div class="container" style="height: 100%;display:none" id="map">
+            <input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
+             <div id="input-control" class="controls">
+                <span id="clear-pac-input">Clear</span>
+              </div>
+          </div> <!-- /container -->  
+              
+          <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
+          <div id="recommendedCards">
+              <div id="bestCard"></div> 
+          </div>
+		  
+      </div>
+      
       <div class = "container " id="tabControl">      
           <ul class="nav nav-tabs btn-group btn-group-justified" id = "myTab" style="text-align:center;">
-				<li class = "mytab"><a href="#home" data-toggle="tab">Current Cards</a></li>
-				<li class = "mytab"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
-                <li class = "mytab"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>                 
+				<li class = "mytab" style="width:30%;"><a href="#homeTab" data-toggle="tab">Home</a></li>
+				<li class = "mytab" style="width:30%;"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
+                <li class = "mytab" style="width:40%;"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>                 
           </ul>
       </div>
 	   <div class="modal fade" id = "successRemove">
