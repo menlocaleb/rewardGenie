@@ -135,9 +135,16 @@ function handleLogin(user){
 			loginElement.show();	
 				
 			$('#signInDiv').hide();
+			$('#title').hide();
+			$('#contentHome').hide();
 			$('#tab').show();
 			$("#tabControl").show();
 			$("#logOutButton").show();
+
+
+			$("#mapview").show();
+			$("#bestCard").hide();
+
 			google.maps.event.addDomListener(window, 'load', initialize);
 
 
@@ -159,6 +166,8 @@ function handleLogin(user){
 			$("#login").hide();
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
+			$('#title').show();
+			$('#contentHome').show();
 			$('#find-rewards-button').hide();
 			$("#mapview").hide();
 			google.maps.event.addDomListener(window, 'load', initialize);
@@ -192,7 +201,7 @@ function addCreditCard(number){
 				innerHtml += "Card Type: " + data.card_type + "<br/>";
 			}
 				
-
+			$("#usercardInfoOutput").show();
 			$("#usercardInfoOutput").html(innerHtml);
 			$("#usercardInfoOutput").prop("class","alert alert-success");
 			$("#addCreditCardToUser").show();
@@ -225,23 +234,37 @@ function saveCardToUser(){
 		}
 	}
 	if (currentCard) {
-		relation.add(currentCard);
-		currentUser.save(null, {
-			success: function() {
-				$('#successAdd').modal('show');
-				//console.log($('#usercardInfoOutput').html());
-				$("#usercardInfoOutput").hide();
-				
-				$('#inputCreditCard').val("");
-				$("#addCreditCardToUser").hide();
-				$("#rewards").hide();
-				$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
 
-			},
-			error: function() {
-				console.log("error saving card to user.");
-			} 
-		});
+		var found = false;
+		for(var i = 0; i < cardlists.length; i++) {
+		    if (cardlists[i].getCardName() == currentCard.getCardName()) {
+		        found = true;
+		        break;
+		    }
+		}
+
+		if (found){
+				$('#sameCardError').modal('show');
+
+		}
+		else {
+				relation.add(currentCard);
+				currentUser.save(null, {
+					success: function() {
+						$('#successAdd').modal('show');
+						//console.log($('#usercardInfoOutput').html());
+						$("#usercardInfoOutput").hide();			
+						$('#inputCreditCard').val("");
+						$("#addCreditCardToUser").hide();
+						$("#rewards").hide();
+						$('#usercardInfoOutputInModal').html($('#usercardInfoOutput').html());
+
+					},
+					error: function() {
+						console.log("error saving card to user.");
+					} 
+				});
+			}
 	}
 }
 

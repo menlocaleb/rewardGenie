@@ -169,9 +169,11 @@ function handleNoGeolocation(errorFlag) {
 
 function showBestCard(offer) {
   if (offer) {
-    $("#bestCard").html("<h2>Best card to use is the <strong>" + offer.card().getBank() + " " + offer.card().getCardName() + "</strong> card.</h2> <h3>" + offer.card().getOfferDescription() + "</h3>");
+	$("#bestCard").show();  
+    $("#bestCard").html('Best card to use is the <span style="color:#188F89; font-size: 18pt;">' + offer.card().getBank() + ' ' + offer.card().getCardName() + '</span> card.<br/><br/>' + offer.card().getOfferDescription());
   } else {
-    $("#bestCard").html("<h4><span class='label label-danger'>No Results</span> Unfortunately, none of your cards offer rewards at this location.</h4>")
+	$("#bestCard").show(); 
+    $("#bestCard").html('<span class="label label-danger">No Results</span> Unfortunately, none of your cards offer rewards at this location.')
   }
 }
 
