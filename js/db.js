@@ -132,15 +132,19 @@ function handleLogin(user){
 			var button  = $("#dropdownButton");
 			var name = user.getUsername();
 			button.text(name);
-			loginElement.show();			
+			loginElement.show();	
+			$('#map').show();		
 			$('#signInForm').hide();
+			$('#tab').show();
 			$("#tabControl").show();
-			$('#find-rewards-button').show();
+			$('#find-rewards-button').hide();
+			$('#title').hide();
+			$('#content').hide();
 			showTabBar();
-			var url = document.location.href;
-			if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
+		//	var url = document.location.href;
+		//	if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
 				
-			}
+		//	}
 		}
 		else {
 			userLoginStatus = false;

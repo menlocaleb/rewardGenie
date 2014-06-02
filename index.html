@@ -2,19 +2,18 @@
 layout: default
 title: Reward Genie
 ---
-
     <div class="tab-content">
       <div class="tab-pane active" id="home">
-          <div class="jumbotron">
+          <div class="jumbotron" id="title">
             <div class="container">
               <h1 style="color:#203D6C">Welcome to Reward Genie!</h1>
               <p>Reward Genie can help you find the best card to use in order to maximize your card rewards!</p>
           <!--<p><a href="addBank.html" class="btn btn-primary btn-lg" role="button">Add New Account</a></p>-->
           <p><a id="find-rewards-button" href="findRewards2.html" class="btn btn-lg" role="button" style="background-color: #203D6C; color:#FFFFFF">Find Cashback Rewards</a></p>
             </div>
-          </div>
+    </div>
 
-          <div class="container">
+    <div class="container" id="content">
             <!-- Example row of columns -->
             <div class="row">
               <div class="col-md-4">
@@ -33,9 +32,34 @@ title: Reward Genie
                 
               </div>
             </div>
-          </div>
-      </div>
+  </div>
+  <div class="tab-content" id="tab" style="display:none">
+      <div class="tab-pane" id="home">
+		  <div class="container" style="height: 100%;display:none" id="map">
+				<input id="pac-input" class="controls" type="text" placeholder="Enter a merchant name" >
+				 <div id="input-control" class="controls">
+					<span id="clear-pac-input">Clear</span>
+				  </div>
+				 <!--<div id="type-selector" class="controls">
 
+				 <input id="pac-input" class="controls" type="text"
+				placeholder="Enter a location" style = "display:none;">
+				<div id="type-selector" class="controls" style = "display:none;">
+				 <input type="radio" name="type" id="changetype-all" checked="checked">
+				  <label for="changetype-all">All</label>
+				 </div>-->
+				  <h2 style="margin:15px; text-align:center; color: RGB(63, 134, 196);">Find Rewards</h2>
+				  <div id="map-canvas2" style="height: 45%; margin-top: 30px;"></div>
+				  <div id="recommendedCards">
+				  <div id="bestCard">
+				  </div> 
+				  </div>
+		  <!--div style="margin: 15px;"><a href="index.html" class="btn btn-primary btn-lg" role="button">Return to home</a></div-->
+			 <hr>
+		  </div> <!-- /container -->
+	</div>
+	</div>
+    <div class="tab-content" id="tab" style="display:none">
       <div class="tab-pane" id="addCreditCard" style = "margin:15px;">
         <h2 style = "text-align:center;">Add New Credit Card</h2>
           <table id = "searchResults" cellspacing = "10">
@@ -56,7 +80,7 @@ title: Reward Genie
           <div class="col-md-1">
             <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block btn-primary" style="margin-top:20px" onclick = "saveCardToUser()">Add this card to account</button>
           </div>
-		  <p style="margin: 10px; color: #188F89; font-size: 11pt">*Please note that we do not store your credit card number in our system.</p>
+		  <p style="margin: 15px; color: #188F89; font-size: 11pt">*Please note that we do not store your credit card number in our system.</p>
         </div>
 
         
@@ -81,10 +105,7 @@ title: Reward Genie
         </div><!-- /.modal -->
 
       </div>
-
-
-
-      <div class="tab-pane" id="myCurrentCards" style = "margin:15px;">
+      <div class="tab-pane active" id="myCurrentCards" style = "margin:15px;">
 
         <div class="row">
           <h2 class="col-md-6 col-md-offset-3">My Current Cards</h2>
@@ -92,20 +113,13 @@ title: Reward Genie
         <div id = "cardLists" class="row">
         </div>
       </div>
-      <div class = "container " id="tabControl">
-        
-          <ul class="nav nav-tabs btn-group btn-group-justified" id = "myTab">
-                  <li class = "active mytab"><a href="#home" data-toggle = "tab">Home</a></li>
-                  <li class = "mytab"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
-                  <li class = "mytab"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>
-
+      <div class = "container " id="tabControl">      
+          <ul class="nav nav-tabs btn-group btn-group-justified" id = "myTab" style="text-align:center;">
+				<li class = "mytab"><a href="#home" data-toggle="tab">Current Cards</a></li>
+				<li class = "mytab"><a href="#addCreditCard" data-toggle="tab">Add Card</a></li>
+                <li class = "mytab"><a id="nav-current-cards" href="#myCurrentCards" data-toggle="tab">Current Cards</a></li>                 
           </ul>
-          
-        
       </div>
-
-      
-	  
 	   <div class="modal fade" id = "successRemove">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -117,8 +131,7 @@ title: Reward Genie
                 Your card has been removed successfully.                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-                
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>               
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
