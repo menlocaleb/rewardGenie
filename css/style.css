@@ -16,7 +16,10 @@ a, h4, h5, h6 {
 	color: #188F89;
 }
 
-
+#logOutButton {
+	color: #FFFFFF;
+	background-color: #188F89;
+}
 
 .cardNumber{
 
@@ -73,8 +76,18 @@ a, h4, h5, h6 {
   padding-bottom: 15px;
   margin: 0px 12px 15px 15px;
   background-color: #B1D0B5;
-  color: #FFFFFF;
+  color: #188F89;
   
+}
+
+#bestCard {
+	border-bottom: 1px #CCCCCC solid;
+	margin: 10px;
+	background-color: #B1D0B5;
+  	color: #203D6C;
+	text-align:center;
+	font-size:16pt;
+	padding: 10px;
 }
 
 
@@ -150,7 +163,6 @@ a, h4, h5, h6 {
     float: left;
 }
 
-
 .dropdown{
 
    position: relative;
@@ -178,63 +190,63 @@ a, h4, h5, h6 {
     margin-top: 7px;
 }
 
-    html, body, #map-canvas2 {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-      .controls {
-        margin-top: 16px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
+html, body, #map-canvas2 {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+  }
+  .controls {
+	margin-top: 16px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
 
-      #pac-input {
-        background-color: #fff;
-        padding: 0 11px 0 13px;
-        width:75%;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        text-overflow: ellipsis;
-      }
+  #pac-input {
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width:75%;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
+  }
 
-      #pac-input:focus {
-        border-color: #4d90fe;
-        margin-left: -1px;
-        padding-left: 14px;  /* Regular padding-left + 1. */
-        width: 401px;
-      }
+  #pac-input:focus {
+	border-color: #4d90fe;
+	margin-left: -1px;
+	padding-left: 14px;  /* Regular padding-left + 1. */
+	width: 401px;
+  }
 
-      .pac-container {
-        font-family: Roboto;
-      }
+  .pac-container {
+	font-family: Roboto;
+  }
 
-      #type-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        padding: 5px 11px 0px 11px;
-      }
+  #type-selector {
+	color: #fff;
+	background-color: #4d90fe;
+	padding: 5px 11px 0px 11px;
+  }
 
-      #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+  #type-selector label {
+	font-family: Roboto;
+	font-size: 13px;
+	font-weight: 300;
+  }
 
-      #input-control {
-        color: #fff;
-        background-color: #4d90fe;
-        padding: 5px 11px 0px 11px;
-      }
+  #input-control {
+	color: #fff;
+	background-color: #4d90fe;
+	padding: 5px 11px 0px 11px;
+  }
 
-      #input-control span {
-        font-family: Roboto;
-        font-size: 14px;
-        font-weight: 300;
-      }
+  #input-control span {
+	font-family: Roboto;
+	font-size: 14px;
+	font-weight: 300;
+  }

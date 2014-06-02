@@ -135,10 +135,13 @@ function handleLogin(user){
 			loginElement.show();	
 				
 			$('#signInDiv').hide();
+			$('#title').hide();
+			$('#contentHome').hide();
 			$('#tab').show();
 			$("#tabControl").show();
 			$("#logOutButton").show();
 			$("#mapview").show();
+			$("#bestCard").hide();
 			google.maps.event.addDomListener(window, 'load', initialize);
 			// $('#find-rewards-button').hide();
 			// $('#title').hide();
@@ -155,6 +158,8 @@ function handleLogin(user){
 			$("#login").hide();
 			$("#signInForm").show();
 			$("#signInForm")[0].reset();
+			$('#title').show();
+			$('#contentHome').show();
 			$('#find-rewards-button').hide();
 			$("#mapview").hide();
 			currentUser = null;
