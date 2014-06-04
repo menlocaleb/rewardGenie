@@ -145,16 +145,8 @@ $(document).ready(function() {
 		else {
 			$("#addCreditCardToUser").attr('disabled','disabled');
 		}
-		
-
 	});
-
-
 });
-
-
-
-
 
 $("#logOutButton").click(function(){
 		handleLogin(currentUser);
@@ -174,8 +166,6 @@ function closePopUp(){
 
 function resetForm($form) {
     $form.find('input:text, input:password, input:file, select, textarea').val('');
-    // $form.find('input:radio, input:checkbox')
-    //      .removAttr('checked').removeAttr('selected');
     $('#email').val("");     
 }
 
@@ -183,9 +173,7 @@ function resetForm($form) {
 
 
 $("#signupform").submit(function(e){
-    //alert("Submitted");
-    //event.preventDefault();
-
+    
     var fields = $(this).serializeArray();
     addUser(fields); 
 	closePopUp();
@@ -194,6 +182,9 @@ $("#signupform").submit(function(e){
   });
 
 
+/**
+	Submmit your log in form, and handle the input
+*/
 $('#signInForm').submit(function(e){
 
 	var fields = $(this).serializeArray();
@@ -202,6 +193,7 @@ $('#signInForm').submit(function(e){
 	//document.location.href = "index.html";
 	return false;
 });
+
 	
 /*  $("#cardCancelBtn").click(function() {
     $('#cancelRemove').modal('show');
@@ -210,9 +202,9 @@ $('#signInForm').submit(function(e){
 $("#cardDeleteBtn").click(function() {
 	x = xForDelete;
     var card = $(x).parent();
-	$(card).remove();
-	removeCards(card);
-  });  */
+
+*/
+
 
 function dofordrop(x){
 	$('#confirmRemove').modal('show');
@@ -223,8 +215,6 @@ function dofordrop(x){
 		removeCards(cardId);
 	});
 }
-
-
 
 
 function showTabBar(){
