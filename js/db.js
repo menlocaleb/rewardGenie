@@ -147,9 +147,7 @@ function handleLogin(user){
 			$("#mapview").show();
 			$("#bestCard").hide();
 
-			google.maps.event.addDomListener(window, 'load', initialize);
-
-
+			initialize();
 				
 			$("#mapview").show();
 			
@@ -172,7 +170,8 @@ function handleLogin(user){
 			$('#contentHome').show();
 			$('#find-rewards-button').hide();
 			$("#mapview").hide();
-			google.maps.event.addDomListener(window, 'load', initialize);
+			
+			//initialize();
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
