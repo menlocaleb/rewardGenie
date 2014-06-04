@@ -18,6 +18,7 @@ Discover
 
 // Start of execution
 var prevString = "";
+var xForDelete;
 $("#addCreditCardToUser").hide();
 $(document).ready(function() {
 
@@ -201,13 +202,26 @@ $('#signInForm').submit(function(e){
 	//document.location.href = "index.html";
 	return false;
 });
-
-
-
-function dofordrop(x){
-	var card = $(x).parent();
+	
+/*  $("#cardCancelBtn").click(function() {
+    $('#cancelRemove').modal('show');
+  });
+ 
+$("#cardDeleteBtn").click(function() {
+	x = xForDelete;
+    var card = $(x).parent();
 	$(card).remove();
 	removeCards(card);
+  });  */
+
+function dofordrop(x){
+	$('#confirmRemove').modal('show');
+	$('#cardDeleteBtn').off('click.rewardGenie');
+	$('#cardDeleteBtn').on('click.rewardGenie', function() {
+		var cardId = $(x).parent();
+		$(cardId).remove();
+		removeCards(cardId);
+	});
 }
 
 
