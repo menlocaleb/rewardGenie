@@ -74,7 +74,7 @@ title: Reward Genie
           <table id = "searchResults" cellspacing = "10" style="margin-top:30px;">
           <tr class = "row" style="margin-top:10px;"> 
             <td class = "col-xs-5" style="font-size: 13px; color:#203D6C;"><label class = "cardNumber">Card Number:* </label></td>
-            <td class = "col-md-5"><input type="text" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
+            <td class = "col-md-5"><input type="number" class="form-control" placeholder="Input First 6 digits" id = "inputCreditCard" maxlength = "6"/></td> 
              
            </tr>          
           <tr class="row">
@@ -87,10 +87,12 @@ title: Reward Genie
 
         </table>
         <div class="row" style="margin-top:10px;">
-          <div class="col-md-1">
-            <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block" style="margin-top:20px; color:#FFFFFF; background-color:#203D6C;" onclick = "saveCardToUser()">Add this card to account</button>
+          <div class="col-md-2 col-md-offset-5">
+            <button id="addCreditCardToUser" type="button" class="btn btn-large btn-block" style="margin-top:20px; color:#FFFFFF; background-color:#203D6C;" onclick = "saveCardToUser()" disabled='disabled'>Add card</button>
           </div>
-		  <p style="margin: 15px; color: #188F89; font-size: 11pt; text-align:center;">*Please note that we do not store your credit card number in our system.</p>
+        </div>
+        <div class="row">
+		      <p style="margin: 15px; color: #188F89; font-size: 11pt; text-align:center;">*Please note that we do not store your credit card number in our system.</p>
         </div>
 
         
