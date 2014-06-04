@@ -170,6 +170,41 @@ title: Reward Genie
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
+		
+		<div class="modal fade" id = "cancelRemove">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><span style="color:red">Card NOT Removed</span></h4>
+              </div>
+              <div class="modal-body">
+                Your card has not been removed.                 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>               
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+		
+		<div class="modal fade" id = "confirmRemove">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><span style="color:red">Confirm</span></h4>
+              </div>
+              <div class="modal-body">
+                WARNING: You have selected to delete a card from your profile.<br/><br/>Are you sure that you would like to delete this card?                 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="cardDeleteBtn">Delete</button>  
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="cardCancelBtn">Cancel</button>               				
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
       <div class="modal fade" id = "sameCardError">
           <div class="modal-dialog">
