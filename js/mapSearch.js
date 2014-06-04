@@ -18,14 +18,21 @@ function initialize() {
 }
 
 function addControl(controlDiv){
-  var input = document.createElement('div');
+  var input = document.createElement('input');
   input.className = "controls";
   input.id = "pac-input";
   controlDiv.appendChild(input);
 
   var types = document.createElement('div');
   types.className = "controls";
-  types.id = "type-selector";
+
+  types.id = "input-control";
+
+  var children = document.createElement('span');
+  children.id = "clear-pac-input";
+  children.innerHTML = "Clear";
+
+  types.appendChild(children);
   controlDiv.appendChild(types);
 
 }
@@ -40,21 +47,25 @@ function setupMap(position) {
   var map = new google.maps.Map(document.getElementById('map-canvas2'),
     mapOptions);
 
+ google.maps.event.trigger(map, 'resize');
+  
+  if (!document.getElementById('pac-input')) {
+    addControl(document.getElementById("map"));
+  }
+
   var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
+  document.getElementById('pac-input'));
 
 
   //var types = document.getElementById('type-selector');
   var clearButton = document.getElementById('input-control')
-  var types = document.getElementById('type-selector');
-
-
-
+  //var types = document.getElementById('type-selector');
 
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
 
   
+ //map.checkResize();
 
   $("#pac-input").css("display","block");
   $("#type-selector").css("display","block");

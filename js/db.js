@@ -147,9 +147,7 @@ function handleLogin(user){
 			$("#mapview").show();
 			$("#bestCard").hide();
 
-			google.maps.event.addDomListener(window, 'load', initialize);
-
-
+			initialize();
 				
 			$("#mapview").show();
 			
@@ -172,7 +170,8 @@ function handleLogin(user){
 			$('#contentHome').show();
 			$('#find-rewards-button').hide();
 			$("#mapview").hide();
-			google.maps.event.addDomListener(window, 'load', initialize);
+			
+			//initialize();
 			currentUser = null;
 			$('#myTab a[href="#home"]').tab('show')
 			Parse.User.logOut();
@@ -192,11 +191,14 @@ function addCreditCard(number){
 
 			if (data.bank) {
 				innerHtml += "Bank: " + data.bank + "<br/>";
-				if (data.brand) {
-					innerHtml += "Brand: " + data.brand + "<br/>";
+			}
+
+			if (data.brand) {
+				if (innerHtml == '' && (data.brand == 'DISCOVER' || data.brand == 'AMERICAN EXPRESS')) {
+					innerHtml += "Bank: " + data.brand + " BANK<br/>";
 				}
-			} else if (data.brand) {
-				innerHtml += "Issuer: " + data.brand + "<br/>";
+
+				innerHtml += "Brand: " + data.brand + "<br/>";
 			}
 
 			if (data.card_type) {
@@ -207,6 +209,8 @@ function addCreditCard(number){
 			$("#usercardInfoOutput").html(innerHtml);
 			$("#usercardInfoOutput").prop("class","alert alert-success");
 			$("#addCreditCardToUser").show();
+			$("#selectCard").change(); // force change event so that add button is disabled
+
 
 			handleCurrentCard(data);
 			currentCard = data;
