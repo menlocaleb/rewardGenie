@@ -126,6 +126,28 @@ $(document).ready(function() {
 
 	});
 
+	$("#selectCard").change(function() {
+		var text = $("#usercardInfoOutput").html();
+		var lines = text.split("<br>");
+
+		if (lines[0].substr(0,4) == "Card") {
+			lines.splice(0,1);
+		}
+		var selection = $(this).val();
+		if (selection && selection !== 'Choose a card...') {
+			$("#usercardInfoOutput").html("Card: " + selection + "<br>" + lines.join("<br>"));
+
+			// enable add button
+			$("#addCreditCardToUser").removeAttr('disabled');
+
+		}
+		else {
+			$("#addCreditCardToUser").attr('disabled','disabled');
+		}
+		
+
+	});
+
 
 });
 
