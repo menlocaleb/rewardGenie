@@ -101,20 +101,29 @@ $(document).ready(function() {
 
 	$("#inputCreditCard").keyup(function(){
 		var inputCreditCard = $('#inputCreditCard');
-		if (inputCreditCard.val().length != 6) {
+		var value = inputCreditCard.val();
+
+		// manually restrict length of number field to 6 digits
+		if (value.length > 6) {
+			value = value.substring(0,6);
+			inputCreditCard.val(value);
+		}
+
+		// handle input
+		if (value.length != 6) {
 			$("#addCreditCardToUser").hide();
 			$("#cardInfoOutput").hide();
 			$("#rewards").hide();
 			$("#usercardInfoOutput").prop("class","");
 			$("#usercardInfoOutput").html("");
 		}
-		else if (( inputCreditCard.val() != inputCreditCard.data('val')) ||
-				(inputCreditCard.val() == prevString ) ){
+		else if (( value != inputCreditCard.data('val')) ||
+				(value == prevString ) ){
 			//console.log("happened!");
 			inputCreditCard.data('val',inputCreditCard.val());
-			addCreditCard(inputCreditCard.val());
+			addCreditCard(value);
 			$("#rewards").show();
-			prevString = inputCreditCard.val();
+			prevString = value;
 			
 		}
 		// !!!! WILL NEVER REACH HERE EVER B/C OF FIRST IF STATEMENT
