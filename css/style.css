@@ -25,6 +25,10 @@ a, h4, h5, h6 {
 	background-color: #188F89;
 }
 
+.recommendations {
+	font-size: 12pt;
+}
+
 .cardNumber{
 
   text-align: right;

@@ -28,9 +28,6 @@ function addControl(controlDiv){
   types.id = "type-selector";
   controlDiv.appendChild(types);
 
-
-
-
 }
 
 
@@ -128,14 +125,14 @@ function setupMap(position) {
 
 
   setupClearListener('#clear-pac-input', '#pac-input', infowindow);
-
+  setupClearListener('#recommendationDone', '#pac-input', infowindow);
 	
 }
 
 function setupClearListener(id, inputId, info) {
   $(id).click(function() {
     $(inputId).val("");
-    $("#bestCard").html("");
+    //$("#bestCard").html("");
     info.close();
   });
 }
@@ -169,11 +166,13 @@ function handleNoGeolocation(errorFlag) {
 
 function showBestCard(offer) {
   if (offer) {
-	$("#bestCard").show();  
-    $("#bestCard").html('Best card to use is the <span style="color:#188F89; font-size: 18pt;">' + offer.card().getBank() + ' ' + offer.card().getCardName() + '</span> card.<br/><br/>' + offer.card().getOfferDescription());
+	//$("#bestCard").show();  
+    $("#bestCardInfo").html('<p class="recommendations">Best card to use is the <span style="color:#188F89; font-size: 14pt;">' + offer.card().getBank() + ' ' + offer.card().getCardName() + '</span> card.<br/><br/>' + offer.card().getOfferDescription())+'</p>';
+	$('#CardRecommendations').modal('show');
   } else {
-	$("#bestCard").show(); 
-    $("#bestCard").html('<span class="label label-danger">No Results</span> Unfortunately, none of your cards offer rewards at this location.')
+	//$("#bestCard").show(); 
+    $("#bestCardInfo").html('<p class="recommendations"><span class="label label-danger">No Results</span> Unfortunately, none of your cards offer rewards at this location.</p>');
+	$('#CardRecommendations').modal('show');
   }
 }
 
