@@ -285,6 +285,19 @@ $( "#dialog-message" ).dialog({
 });
 
 $( "#dialog-message" ).dialog({
+  modal: true,
+  buttons: {
+    Done: function() {
+      $( this ).dialog( "close" );
+	  $(inputId).val("");
+      info.close();
+	  alert("test");
+    }
+  }
+});
+
+
+$( "#dialog-message" ).dialog({
   autoOpen: false,
   show: {
     effect: "blind",
