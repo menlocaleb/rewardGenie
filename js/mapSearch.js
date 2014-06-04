@@ -17,23 +17,12 @@ function initialize() {
   
 }
 
+
 function addControl(controlDiv){
   var input = document.createElement('input');
   input.className = "controls";
   input.id = "pac-input";
   controlDiv.appendChild(input);
-
-  var types = document.createElement('div');
-  types.className = "controls";
-
-  types.id = "input-control";
-
-  var children = document.createElement('span');
-  children.id = "clear-pac-input";
-  children.innerHTML = "Clear";
-
-  types.appendChild(children);
-  controlDiv.appendChild(types);
 
 }
 
@@ -57,12 +46,7 @@ function setupMap(position) {
   document.getElementById('pac-input'));
 
 
-  //var types = document.getElementById('type-selector');
-  var clearButton = document.getElementById('input-control')
-  //var types = document.getElementById('type-selector');
-
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
 
   
  //map.checkResize();
