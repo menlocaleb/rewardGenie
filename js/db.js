@@ -150,15 +150,9 @@ function handleLogin(user){
 			initialize();
 				
 			$("#mapview").show();
-			
-			// $('#find-rewards-button').hide();
-			// $('#title').hide();
-			// $('#content').hide();
+		
 			showTabBar();
-		//	var url = document.location.href;
-		//	if (url.substr(url.lastIndexOf('/')) !== "/findRewards.html") {
-				
-		//	}
+		
 		}
 		else {
 			userLoginStatus = false;
