@@ -140,8 +140,23 @@ $("#logOutButton").click(function(){
 
 
 function closePopUp(){
-	$('#myModal').modal('hide')
+	$('#myModal').modal('hide');
+	//$('#signupform').reset();
+	resetForm($('#signupform'));
+    //$("#signupform").closest('form').find("input[type=text], textarea").val("");
+
 }
+
+
+
+function resetForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    // $form.find('input:radio, input:checkbox')
+    //      .removAttr('checked').removeAttr('selected');
+    $('#email').val("");     
+}
+
+
 
 
 $("#signupform").submit(function(e){
@@ -194,6 +209,7 @@ function showTabBar(){
 $('#Signup').click(function() {
 	
 	$('#myModal').modal('show');
+	resetForm($('#signupform'));
 	
 	return false;
 });
