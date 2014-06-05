@@ -202,10 +202,12 @@ function addCreditCard(number){
 				innerHtml += "Card Type: " + data.card_type + "<br/>";
 			}
 				
-			$("#usercardInfoOutput").show();
+			
 			$("#usercardInfoOutput").html(innerHtml);
 			$("#usercardInfoOutput").prop("class","alert alert-success");
+			$("#usercardInfoOutput").show();
 			$("#addCreditCardToUser").show();
+			$('#selectCard').find('option').remove();
 			$("#selectCard").change(); // force change event so that add button is disabled
 
 
