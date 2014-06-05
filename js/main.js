@@ -38,7 +38,7 @@ $(document).ready(function() {
 			$("#cardLists").empty();
 
 			for (var i = 0; i < list.length; i++) {
-				html = '<h3 style="color: #203D6C;">'+list[i].getBank() + '<br/>' + list[i].getCardName()+"</h3>";
+				html = '<h3 style="color: #203D6C;">'+list[i].getBankName() + '<br/>' + list[i].getCardName()+"</h3>";
 				html += '<p style="font-size: 14pt;">' + list[i].getOfferDescription() + '</p>';
 				
 				//console.log(list[i]);

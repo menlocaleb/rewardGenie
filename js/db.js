@@ -53,7 +53,10 @@ var Card = Parse.Object.extend("Card", {
 		return this.get("Id");
 	},
 	getBank: function() {
-		return this.get("issuerBank");
+		return this.get("issuerBank");		// what binlist returns
+	},
+	getBankName: function() {
+		return this.get("bankDisplayName");	// display name
 	}
 });
 
